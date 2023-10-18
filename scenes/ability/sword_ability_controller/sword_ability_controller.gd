@@ -54,4 +54,3 @@ func on_ability_upgrade_added(upgrade, current_upgrades):
 	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .5
 	timer.wait_time = max(base_wait_time * (1 - percent_reduction), .15)
 	timer.start()
-	print(timer.wait_time)
