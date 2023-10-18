@@ -1,12 +1,12 @@
 extends Node
 
 @export_range(0, 1) var drop_procent: float = .5
-@export var health_component: Node
+@export var health_component: HealthComponent
 @export var orb_scene: PackedScene
 
 
 func _ready() -> void:
-	(health_component as HealthComponent).died.connect(on_died)
+	health_component.died.connect(on_died)
 
 
 func on_died():

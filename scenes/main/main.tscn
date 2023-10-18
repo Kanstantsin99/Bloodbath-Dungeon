@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7dr3o1r2k6em"]
+[gd_scene load_steps=13 format=3 uid="uid://b7dr3o1r2k6em"]
 
 [ext_resource type="TileSet" uid="uid://dxb5s6l0io3aq" path="res://resources/monochrome_tilemap.tres" id="1_he6c8"]
 [ext_resource type="PackedScene" uid="uid://civ5hgdfpnuhk" path="res://scenes/manager/enemy_manager.tscn" id="1_r5uwm"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cx3p1ndkn18jf" path="res://scenes/manager/experience_manager.tscn" id="4_uty2p"]
 [ext_resource type="PackedScene" uid="uid://cd1m15ionygu7" path="res://scenes/ui/arena_time_ui.tscn" id="5_mft2i"]
 [ext_resource type="PackedScene" uid="uid://dlag0ruwybi13" path="res://scenes/manager/upgrade_manager.tscn" id="6_xfcaq"]
+[ext_resource type="PackedScene" uid="uid://4v1m5ja0oqwd" path="res://scenes/manager/difficulty_manager.tscn" id="6_xrpik"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_y2uax")
@@ -24,7 +25,10 @@ experience_manager = NodePath("../ExperienceManager")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("2_vthna")]
 
-[node name="EnemyManager" parent="." instance=ExtResource("1_r5uwm")]
+[node name="DifficultyManager" parent="." instance=ExtResource("6_xrpik")]
+
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("difficulty_manager") instance=ExtResource("1_r5uwm")]
+difficulty_manager = NodePath("../DifficultyManager")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("4_uty2p")]
 
