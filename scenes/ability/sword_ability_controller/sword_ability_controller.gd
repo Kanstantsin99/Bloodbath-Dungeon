@@ -5,17 +5,23 @@ const MAX_RANGE = 150
 @export var sword_ability: PackedScene
 @onready var timer = $Timer
 
-var damage = 5
+var damage = 10
 var base_wait_time: float
 
 func _ready() -> void:
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	base_wait_time = timer.wait_time
+	timer.timeout.connect(on_timer_timeout)
 
-func _on_timer_timeout() -> void:
+func on_timer_timeout() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if !player:
 		return
+	
+	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
+	if !foreground_layer:
+		return
+	
 	
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	enemies = enemies.filter(func(enemy: Node2D): 
@@ -25,9 +31,6 @@ func _on_timer_timeout() -> void:
 		else:
 			return false
 		)
-		
-	if !enemies:
-		return
 	
 	enemies.sort_custom(func(a: Node2D, b: Node2D):
 		var distantce_a = a.global_position.distance_squared_to(player.global_position)
@@ -35,8 +38,11 @@ func _on_timer_timeout() -> void:
 		return distantce_a < distantce_b
 	)
 	
+	if !enemies:
+		return
+	
+	
 	var sword_instance = sword_ability.instantiate() as SwordAbility
-	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
 	sword_instance.hitbox_component.damage = damage
 	

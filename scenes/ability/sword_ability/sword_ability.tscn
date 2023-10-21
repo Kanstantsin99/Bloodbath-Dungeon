@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://caqy3umhiedud"]
 
-[ext_resource type="Texture2D" uid="uid://blu0bjh2x1wgi" path="res://scenes/ability/sword_abiliry/sword.png" id="1_0habc"]
-[ext_resource type="Script" path="res://scenes/ability/sword_abiliry/sword_ability.gd" id="1_upvwb"]
+[ext_resource type="Texture2D" uid="uid://blu0bjh2x1wgi" path="res://scenes/ability/sword_ability/sword.png" id="1_0habc"]
+[ext_resource type="Script" path="res://scenes/ability/sword_ability/sword_ability.gd" id="1_upvwb"]
 [ext_resource type="PackedScene" uid="uid://bnaymlq0p47kw" path="res://scenes/component/hitbox_commponent.tscn" id="2_c4ju3"]
 
 [sub_resource type="Animation" id="Animation_ajgpm"]
@@ -38,26 +38,26 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1.8, 1),
-"update": 0,
-"values": [-0.785398, -0.785398, 2.35619, -0.785398]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.35, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 5.27803, 1),
 "update": 0,
 "values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(1.25, 1.25), Vector2(1, 1), Vector2(2, 2), Vector2(1, 1), Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1.8, 1),
+"update": 0,
+"values": [-0.785398, -0.785398, 2.35619, -0.785398]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
