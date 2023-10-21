@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx2sn1q6akme5"]
+
+[ext_resource type="Script" path="res://scenes/ability/axe_ability/axe_ability.gd" id="1_51spd"]
+[ext_resource type="Texture2D" uid="uid://bqgvoktjq87vl" path="res://scenes/ability/axe_ability/axe.png" id="2_2u4nm"]
+[ext_resource type="PackedScene" uid="uid://bnaymlq0p47kw" path="res://scenes/component/hitbox_commponent.tscn" id="2_lrmls"]
+
+[sub_resource type="Animation" id="Animation_1qg6a"]
+resource_name = "axe_rotation"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.785398, 5.41052]
+}
+
+[sub_resource type="Animation" id="Animation_xb4x6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.785398]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0y86d"]
+_data = {
+"RESET": SubResource("Animation_xb4x6"),
+"axe_rotation": SubResource("Animation_1qg6a")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efs3k"]
+size = Vector2(28, 30)
+
+[node name="AxeAbility" type="Node2D"]
+script = ExtResource("1_51spd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "axe_rotation"
+libraries = {
+"": SubResource("AnimationLibrary_0y86d")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.785398
+texture = ExtResource("2_2u4nm")
+offset = Vector2(4.50781, -4.50781)
+
+[node name="HitboxCommponent" parent="." instance=ExtResource("2_lrmls")]
+position = Vector2(-7, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxCommponent"]
+position = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_efs3k")
