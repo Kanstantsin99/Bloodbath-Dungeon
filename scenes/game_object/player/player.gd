@@ -6,6 +6,9 @@ const ACCELERATION_SMOOTHING = 5
 @onready var health_component: Node = $HealthComponent
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var abilities: Node = $Abilities
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var visuals: Node2D = $Visuals
+
 
 @export var speed: int = 100
 var number_colliding_bodies = 0
@@ -29,7 +32,13 @@ func _process(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.y = move_toward(velocity.y, 0, speed)
 	move_and_slide()
-
+	
+	if direction:
+		animation_player.play("walk")
+	else:
+		animation_player.stop()
+	
+	
 
 func get_direction() -> Vector2:
 	var direction_x = Input.get_axis("move_left", "move_right")
