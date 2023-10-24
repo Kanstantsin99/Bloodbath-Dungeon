@@ -8,10 +8,12 @@ const MAX_RANGE = 150
 var damage = 10
 var base_wait_time: float
 
+
 func _ready() -> void:
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	base_wait_time = timer.wait_time
 	timer.timeout.connect(on_timer_timeout)
+
 
 func on_timer_timeout() -> void:
 	var player = get_tree().get_first_node_in_group("player")
@@ -57,6 +59,6 @@ func on_ability_upgrade_added(upgrade, current_upgrades):
 	if upgrade.id != "sword_rate":
 		return
 	
-	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .5
+	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
 	timer.wait_time = max(base_wait_time * (1 - percent_reduction), .15)
 	timer.start()
