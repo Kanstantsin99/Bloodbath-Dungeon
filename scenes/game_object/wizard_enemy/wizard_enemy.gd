@@ -12,5 +12,3 @@ func _process(_delta: float) -> void:
 	var move_sign = sign(velocity.x)
 	if move_sign != 0:
 		visuals.scale.x = move_sign
-
-

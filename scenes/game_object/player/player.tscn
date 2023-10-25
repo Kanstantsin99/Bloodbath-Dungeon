@@ -123,8 +123,6 @@ libraries = {
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qhu4u")]
 
-[node name="HealthComponent2" parent="." instance=ExtResource("2_qhu4u")]
-
 [node name="Abilities" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_2tmp0")]
