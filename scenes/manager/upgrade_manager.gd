@@ -42,7 +42,7 @@ func _filter_and_pick_upgrades(quantity: int) -> Array[AbilityUpgrade]:
 	return filtered_upgrates
 
 
-func on_level_up(current_level: int):
+func on_level_up(_current_level: int):
 	var chosen_upgrades = _filter_and_pick_upgrades(2)
 	if !chosen_upgrades:
 		return

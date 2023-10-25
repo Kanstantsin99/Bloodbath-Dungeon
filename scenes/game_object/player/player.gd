@@ -37,8 +37,7 @@ func _process(_delta: float) -> void:
 		animation_player.play("walk")
 	else:
 		animation_player.stop()
-	
-	
+
 
 func get_direction() -> Vector2:
 	var direction_x = Input.get_axis("move_left", "move_right")
@@ -58,12 +57,12 @@ func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
 
-func on_body_entered(other_body: Node2D):
+func on_body_entered(_other_body: Node2D):
 	number_colliding_bodies += 1
 	check_deal_damage()
 
 
-func on_body_exited(other_body: Node2D):
+func on_body_exited(_other_body: Node2D):
 	number_colliding_bodies -= 1
 
 
@@ -75,7 +74,7 @@ func on_health_changed():
 	update_health_display()
 
 
-func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
 	if not ability_upgrade is Ability:
 		return
 	
