@@ -5,7 +5,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	$Area2D.area_entered.connect(on_area_2d_area_entered)
+	$Area2D.area_entered.connect(on_area_2d_area_entered, CONNECT_ONE_SHOT)
 
 
 func tween_collect(percent: float, start_pos: Vector2):
@@ -21,12 +21,7 @@ func collect():
 	queue_free()
 
 
-func disable_col():
-	collision_shape_2d.disabled = true
-
-
 func on_area_2d_area_entered(_area: Area2D) -> void:
-	Callable(disable_col).call_deferred()
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_method(tween_collect.bind(global_position), 0.0, 1.0, .5)\

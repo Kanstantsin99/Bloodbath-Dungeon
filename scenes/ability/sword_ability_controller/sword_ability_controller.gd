@@ -5,7 +5,7 @@ const MAX_RANGE = 150
 @export var sword_ability: PackedScene
 @onready var timer = $Timer
 
-var damage = 10
+var damage = 5
 var base_wait_time: float
 
 
