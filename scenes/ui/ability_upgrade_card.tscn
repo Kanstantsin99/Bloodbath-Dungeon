@@ -11,12 +11,14 @@ layout_mode = 2
 
 [node name="NameLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "Test name"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 16
 text = "Wright some description here
 "
 autowrap_mode = 2

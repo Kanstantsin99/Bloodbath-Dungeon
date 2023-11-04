@@ -113,7 +113,7 @@ _data = {
 "walk": SubResource("Animation_ygd51")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0wgq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k16a1"]
 resource_local_to_scene = true
 shader = ExtResource("4_7kt0m")
 shader_parameter/lerp_precent = 0.0
@@ -141,7 +141,7 @@ max_health = 20.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_23osf")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_a0wgq")
+hit_flash_material = SubResource("ShaderMaterial_k16a1")
 
 [node name="OrbDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_y42bi")]
 health_component = NodePath("../HealthComponent")
