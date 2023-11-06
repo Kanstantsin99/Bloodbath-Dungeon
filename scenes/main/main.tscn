@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7dr3o1r2k6em"]
+[gd_scene load_steps=18 format=3 uid="uid://b7dr3o1r2k6em"]
 
 [ext_resource type="TileSet" uid="uid://dxb5s6l0io3aq" path="res://resources/monochrome_tilemap.tres" id="1_he6c8"]
 [ext_resource type="PackedScene" uid="uid://civ5hgdfpnuhk" path="res://scenes/manager/enemy_manager.tscn" id="1_r5uwm"]
@@ -16,10 +16,13 @@
 [ext_resource type="Resource" uid="uid://ggpj18ab57kc" path="res://resources/upgrades/axe_damage.tres" id="11_ggb4s"]
 [ext_resource type="Resource" uid="uid://dsdavs683b4ig" path="res://resources/upgrades/sword_rate.tres" id="11_ubida"]
 [ext_resource type="Resource" uid="uid://ygdbxg4f1mdk" path="res://resources/upgrades/sword_damage.tres" id="12_ix8ie"]
+[ext_resource type="PackedScene" uid="uid://bqbqwkvmakqwx" path="res://scenes/ui/vignette.tscn" id="16_ggcdy"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_y2uax")
 end_screen_scene = ExtResource("4_rt7th")
+
+[node name="Vignette" parent="." instance=ExtResource("16_ggcdy")]
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("5_mft2i")]
 arena_time_manager = NodePath("../ArenaTimeManager")

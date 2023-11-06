@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfqm5jujduf88"]
+[gd_scene load_steps=17 format=3 uid="uid://dfqm5jujduf88"]
 
 [ext_resource type="Texture2D" uid="uid://bx66xsh2dui3w" path="res://scenes/game_object/player/player.png" id="1_5dqgv"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_qdlkj"]
 [ext_resource type="PackedScene" uid="uid://b87wu52bl5dp6" path="res://scenes/component/hit_flash_component.tscn" id="2_0xnvq"]
 [ext_resource type="PackedScene" uid="uid://cqr8ft0c6f637" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_2tmp0"]
+[ext_resource type="PackedScene" uid="uid://tbjt64flgwdn" path="res://scenes/component/velocity_component.tscn" id="2_lp5qq"]
 [ext_resource type="PackedScene" uid="uid://bo8lu3s4w54vn" path="res://scenes/component/health_component.tscn" id="2_qhu4u"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="3_y8xr0"]
 
@@ -93,7 +94,7 @@ _data = {
 "walk": SubResource("Animation_o0qcx")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7k77"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcr3e"]
 resource_local_to_scene = true
 shader = ExtResource("3_y8xr0")
 shader_parameter/lerp_precent = 0.0
@@ -128,10 +129,14 @@ libraries = {
 "": SubResource("AnimationLibrary_id1mj")
 }
 
+[node name="VelocityComponent" parent="." instance=ExtResource("2_lp5qq")]
+max_speed = 90
+acceleration = 10.0
+
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_0xnvq")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_s7k77")
+hit_flash_material = SubResource("ShaderMaterial_lcr3e")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qhu4u")]
 
