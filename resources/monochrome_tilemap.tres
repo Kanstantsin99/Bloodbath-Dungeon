@@ -1,10 +1,13 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://dxb5s6l0io3aq"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dxb5s6l0io3aq"]
 
 [ext_resource type="Texture2D" uid="uid://hici7bi8rys" path="res://assets/environment/monochrome.png" id="1_7pawc"]
 [ext_resource type="Texture2D" uid="uid://dpaqut0qx2nwu" path="res://assets/environment/wall_shadow.png" id="2_ed3hc"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_kjo1r"]
 tile_data = PackedInt32Array(0, 655360, 17, 65536, 1, 0, 1, 655360, 17, 65537, 1, 0, 2, 655360, 17, 65538, 1, 0, 3, 655360, 17, 65539, 1, 0, 4, 655360, 18, 65540, 1, 0, 5, 655360, 17, 65541, 1, 0, 6, 655360, 17, 65542, 1, 0, 7, 655360, 17, 65543, 1, 0, 8, 655360, 17, 65544, 1, 0, 9, 655360, 18, 65545, 1, 0, 10, 655360, 17, 65546, 1, 0, 11, 655360, 17, 65547, 1, 0, 12, 655360, 17, 65548, 1, 0, 13, 655360, 17, 65549, 1, 0, 14, 655360, 18, 65550, 1, 0, 15, 655360, 17, 65551, 1, 0, 16, 655360, 17, 65552, 1, 0, 17, 655360, 17, 65553, 1, 0, 18, 655360, 17, 65554, 1, 0, 19, 655360, 18, 65555, 1, 0)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_7e52r"]
+tile_data = PackedInt32Array(0, 327680, 12, 65536, 393216, 13, 131072, 327680, 13, 1, 393216, 12, 65537, 458752, 13, 131073, 786432, 11, 2, 458752, 12, 65538, 393216, 13, 131074, 458752, 13, 3, 0, 0, 65539, 393216, 12, 131075, 393216, 13, 4, 0, 0, 65540, 458752, 12, 131076, 327680, 13)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dx0rn"]
 texture = ExtResource("1_7pawc")
@@ -1915,9 +1918,14 @@ separation = Vector2i(1, 1)
 7:12/0 = 0
 7:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:12/0/physics_layer_0/angular_velocity = 0.0
+8:12/next_alternative_id = 2
 8:12/0 = 0
 8:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:12/0/physics_layer_0/angular_velocity = 0.0
+8:12/1 = 1
+8:12/1/flip_h = true
+8:12/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:12/1/physics_layer_0/angular_velocity = 0.0
 9:12/0 = 0
 9:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:12/0/physics_layer_0/angular_velocity = 0.0
@@ -3426,3 +3434,4 @@ terrain_set_0/terrain_0/color = Color(0, 0.992157, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_dx0rn")
 sources/1 = SubResource("TileSetAtlasSource_hebkg")
 pattern_0 = SubResource("TileMapPattern_kjo1r")
+pattern_1 = SubResource("TileMapPattern_7e52r")

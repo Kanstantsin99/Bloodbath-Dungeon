@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7dr3o1r2k6em"]
+[gd_scene load_steps=18 format=3 uid="uid://b7dr3o1r2k6em"]
 
 [ext_resource type="TileSet" uid="uid://dxb5s6l0io3aq" path="res://resources/monochrome_tilemap.tres" id="1_he6c8"]
 [ext_resource type="PackedScene" uid="uid://civ5hgdfpnuhk" path="res://scenes/manager/enemy_manager.tscn" id="1_r5uwm"]
@@ -12,10 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://cd1m15ionygu7" path="res://scenes/ui/arena_time_ui.tscn" id="5_mft2i"]
 [ext_resource type="PackedScene" uid="uid://dlag0ruwybi13" path="res://scenes/manager/upgrade_manager.tscn" id="6_xfcaq"]
 [ext_resource type="PackedScene" uid="uid://4v1m5ja0oqwd" path="res://scenes/manager/difficulty_manager.tscn" id="6_xrpik"]
+[ext_resource type="Resource" uid="uid://3a824g73qxw1" path="res://resources/upgrades/axe.tres" id="10_o1esc"]
+[ext_resource type="Resource" uid="uid://ggpj18ab57kc" path="res://resources/upgrades/axe_damage.tres" id="11_ggb4s"]
+[ext_resource type="Resource" uid="uid://dsdavs683b4ig" path="res://resources/upgrades/sword_rate.tres" id="11_ubida"]
+[ext_resource type="Resource" uid="uid://ygdbxg4f1mdk" path="res://resources/upgrades/sword_damage.tres" id="12_ix8ie"]
+[ext_resource type="PackedScene" uid="uid://bqbqwkvmakqwx" path="res://scenes/ui/vignette.tscn" id="16_ggcdy"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_y2uax")
 end_screen_scene = ExtResource("4_rt7th")
+
+[node name="Vignette" parent="." instance=ExtResource("16_ggcdy")]
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("5_mft2i")]
 arena_time_manager = NodePath("../ArenaTimeManager")
@@ -32,7 +39,8 @@ difficulty_manager = NodePath("../DifficultyManager")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("4_uty2p")]
 
-[node name="UpgrateManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("6_xfcaq")]
+[node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("6_xfcaq")]
+upgrade_pool = Array[Resource("res://resources/upgrades/ability_upgrate.gd")]([ExtResource("10_o1esc"), ExtResource("11_ggb4s"), ExtResource("12_ix8ie"), ExtResource("11_ubida")])
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="TileMap" type="TileMap" parent="."]

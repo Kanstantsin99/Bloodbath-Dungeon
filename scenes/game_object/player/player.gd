@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-const ACCELERATION_SMOOTHING = 5
+
+var number_colliding_bodies = 0
 
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
 @onready var health_component: Node = $HealthComponent
@@ -8,10 +9,7 @@ const ACCELERATION_SMOOTHING = 5
 @onready var abilities: Node = $Abilities
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var visuals: Node2D = $Visuals
-
-
-@export var speed: int = 100
-var number_colliding_bodies = 0
+@onready var velocity_component: Node = $VelocityComponent
 
 
 func _ready() -> void:
@@ -25,20 +23,15 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	var direction = get_direction()
-	var target_velocity = direction * speed
-	if direction:
-		velocity = velocity.lerp(target_velocity, 1 - exp(-_delta * ACCELERATION_SMOOTHING))
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.y = move_toward(velocity.y, 0, speed)
-	move_and_slide()
+	velocity_component.accelerate_in_direction(direction)
+	velocity_component.move(self)
+	
 	
 	if direction:
 		animation_player.play("walk")
 	else:
 		animation_player.stop()
-	
-	
+
 
 func get_direction() -> Vector2:
 	var direction_x = Input.get_axis("move_left", "move_right")
@@ -58,12 +51,12 @@ func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
 
-func on_body_entered(other_body: Node2D):
+func on_body_entered(_other_body: Node2D):
 	number_colliding_bodies += 1
 	check_deal_damage()
 
 
-func on_body_exited(other_body: Node2D):
+func on_body_exited(_other_body: Node2D):
 	number_colliding_bodies -= 1
 
 
@@ -72,10 +65,11 @@ func on_damage_interval_timer_timeout():
 
 
 func on_health_changed():
+	GameEvents.emit_player_damaged()
 	update_health_display()
 
 
-func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
 	if not ability_upgrade is Ability:
 		return
 	
