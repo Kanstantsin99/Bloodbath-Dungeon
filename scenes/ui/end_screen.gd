@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var panel_container: PanelContainer = %PanelContainer
 
 
+
 func _ready() -> void:
 	panel_container.pivot_offset = panel_container.size / 2
 	
@@ -19,6 +20,14 @@ func _ready() -> void:
 func set_defeat():
 	$%TitleLabel.text = "Defeat"
 	$%DescriptionLabel.text = "You've been defeated"
+	play_jingle(true)
+
+
+func play_jingle(defeat: bool = false):
+	if defeat:
+		$DefeatStreamPlayer.play()
+	else:
+		$VictoryStreamPlayer.play()
 
 
 func on_restart_button_pressed():

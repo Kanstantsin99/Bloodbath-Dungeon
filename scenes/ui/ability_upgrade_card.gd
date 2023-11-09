@@ -2,7 +2,6 @@ extends PanelContainer
 
 signal selected
 
-
 var disabled = false
 
 @onready var name_label: Label = $VBoxContainer/PanelContainer/NameLabel

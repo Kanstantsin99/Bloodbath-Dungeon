@@ -8,5 +8,5 @@ func _ready() -> void:
 
 func on_player_died():
 	var end_screen_instance = end_screen_scene.instantiate()
-	end_screen_instance.set_defeat()
 	add_child(end_screen_instance)
+	end_screen_instance.set_defeat()

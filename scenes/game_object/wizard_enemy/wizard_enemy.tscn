@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cewbx7ji8ve22"]
+[gd_scene load_steps=19 format=3 uid="uid://cewbx7ji8ve22"]
 
 [ext_resource type="Texture2D" uid="uid://cv3fj6qa743nw" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_7bekw"]
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_h07ey"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c8ogkoxroelx6" path="res://scenes/component/hurtbox_component.tscn" id="4_0jdi3"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="4_7kt0m"]
 [ext_resource type="PackedScene" uid="uid://c8fdnj7hh6dtf" path="res://scenes/component/orb_drop_component.tscn" id="4_y42bi"]
+[ext_resource type="AudioStream" uid="uid://x30og6vskbcy" path="res://assets/audio/death_wizard.wav" id="8_bo1b2"]
+[ext_resource type="AudioStream" uid="uid://bufiicw44sysv" path="res://assets/audio/punch.mp3" id="11_qpqcb"]
 
 [sub_resource type="Animation" id="Animation_b2gjb"]
 length = 0.001
@@ -113,7 +115,7 @@ _data = {
 "walk": SubResource("Animation_ygd51")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k16a1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxh1k"]
 resource_local_to_scene = true
 shader = ExtResource("4_7kt0m")
 shader_parameter/lerp_precent = 0.0
@@ -123,6 +125,12 @@ radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_03ywr"]
 radius = 4.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6krn4"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("11_qpqcb")
+stream_0/weight = 1.0
 
 [node name="WizardEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 16
@@ -141,7 +149,7 @@ max_health = 20.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_23osf")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_k16a1")
+hit_flash_material = SubResource("ShaderMaterial_vxh1k")
 
 [node name="OrbDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_y42bi")]
 health_component = NodePath("../HealthComponent")
@@ -153,6 +161,7 @@ acceleration = 20.0
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_uusvs")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+death_sound = ExtResource("8_bo1b2")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_0jdi3")]
 visible = false
@@ -172,3 +181,9 @@ offset = Vector2(2.08165e-12, -7)
 visible = false
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_03ywr")
+
+[node name="HitAudioPlayerComponent" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_6krn4")
+volume_db = -10.0
+max_distance = 300.0
+bus = &"sfx"

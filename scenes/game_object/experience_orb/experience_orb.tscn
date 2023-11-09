@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca3pbi0a8peol"]
+[gd_scene load_steps=5 format=3 uid="uid://ca3pbi0a8peol"]
 
 [ext_resource type="Script" path="res://scenes/game_object/experience_orb/experience_orb.gd" id="1_haqkh"]
 [ext_resource type="Texture2D" uid="uid://6465yqe2o1fu" path="res://scenes/game_object/experience_orb/experience_orb.png" id="1_lkeml"]
+[ext_resource type="AudioStream" uid="uid://c1uxxg6pa2wa8" path="res://assets/audio/orb_pickup_2.wav" id="3_km2lc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1lui0"]
 radius = 5.0
@@ -20,3 +21,8 @@ shape = SubResource("CircleShape2D_1lui0")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.25098, 0.6, 0.937255, 1)
 texture = ExtResource("1_lkeml")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_km2lc")
+volume_db = -20.0
+bus = &"sfx"

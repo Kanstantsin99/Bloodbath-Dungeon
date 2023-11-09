@@ -10,6 +10,7 @@ var number_colliding_bodies = 0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var visuals: Node2D = $Visuals
 @onready var velocity_component: Node = $VelocityComponent
+@onready var hit_audio_player_component: AudioStreamPlayer2D = $HitAudioPlayerComponent
 
 
 func _ready() -> void:
@@ -67,6 +68,7 @@ func on_damage_interval_timer_timeout():
 func on_health_changed():
 	GameEvents.emit_player_damaged()
 	update_health_display()
+	hit_audio_player_component.play()
 
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary):

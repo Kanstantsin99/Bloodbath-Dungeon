@@ -3,6 +3,12 @@ extends CharacterBody2D
 
 @onready var visuals: Node2D = $Visuals
 @onready var velocity_component: Node = $VelocityComponent
+@onready var hurtbox_component: Area2D = $HurtboxComponent
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $HitAudioPlayerComponent
+
+
+func _ready() -> void:
+	hurtbox_component.hit.connect(on_hit)
 
 
 func _process(_delta: float) -> void:
@@ -14,3 +20,5 @@ func _process(_delta: float) -> void:
 		visuals.scale.x = move_sign
 
 
+func on_hit():
+	audio_stream_player_2d.play()
