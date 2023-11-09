@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cga4ep3s5n460"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cga4ep3s5n460"]
 
 [ext_resource type="FontFile" uid="uid://ch68eadevux7s" path="res://resources/theme/Bitfantasy.ttf" id="1_iatxc"]
 [ext_resource type="Texture2D" uid="uid://bnc1k0hpgtlmw" path="res://assets/ui/ui.png" id="1_plsnd"]
+[ext_resource type="Texture2D" uid="uid://dltmj6pm335an" path="res://assets/ui/grabber_16x16.png" id="2_86yd6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kc4bd"]
 texture = ExtResource("1_plsnd")
@@ -12,6 +13,30 @@ texture_margin_bottom = 11.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 region_rect = Rect2(114, 114, 46, 46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm2en"]
+bg_color = Color(0.333333, 0.764706, 0.227451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wafh5"]
+bg_color = Color(0.333333, 0.764706, 0.227451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqgex"]
+content_margin_left = 2.0
+content_margin_top = 4.0
+content_margin_right = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(0.317647, 0.54902, 0.223529, 1)
+border_color = Color(0.352941, 0.458824, 0.243137, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6hpcp"]
 texture = ExtResource("1_plsnd")
@@ -24,12 +49,27 @@ axis_stretch_vertical = 2
 region_rect = Rect2(1, 1, 48, 48)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ppv6"]
-bg_color = Color(0.447059, 0.447059, 0.447059, 1)
+bg_color = Color(0.352941, 0.458824, 0.243137, 0.858824)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8e8d"]
+bg_color = Color(0.333333, 0.764706, 0.227451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.352941, 0.458824, 0.243137, 0)
 
 [resource]
 default_font = ExtResource("1_iatxc")
 default_font_size = 16
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_kc4bd")
+HSlider/icons/grabber = ExtResource("2_86yd6")
+HSlider/icons/grabber_disabled = ExtResource("2_86yd6")
+HSlider/icons/grabber_highlight = ExtResource("2_86yd6")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_nm2en")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_wafh5")
+HSlider/styles/slider = SubResource("StyleBoxFlat_iqgex")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_6hpcp")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_3ppv6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_v8e8d")
