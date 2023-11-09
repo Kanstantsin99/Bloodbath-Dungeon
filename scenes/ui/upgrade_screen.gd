@@ -8,11 +8,12 @@ signal upgrade_selected(upgrade: AbilityUpgrade)
 
 @onready var card_container: HBoxContainer = $MarginContainer/CardContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready() -> void:
 	get_tree().paused = true
-
+	audio_stream_player.play()
 
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
 	var delay = 0

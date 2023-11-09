@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://15pkiabvwc81"]
+[gd_scene load_steps=7 format=3 uid="uid://15pkiabvwc81"]
 
 [ext_resource type="PackedScene" uid="uid://ccumhtwds61vx" path="res://scenes/ui/ability_upgrade_card.tscn" id="1_0wkf6"]
 [ext_resource type="Script" path="res://scenes/ui/upgrade_screen.gd" id="1_ul8jq"]
+[ext_resource type="AudioStream" uid="uid://bjl1k61pf5jny" path="res://assets/audio/card_shufle.wav" id="3_efupt"]
 
 [sub_resource type="Animation" id="Animation_rod8b"]
 resource_name = "in"
@@ -45,6 +46,10 @@ _data = {
 process_mode = 3
 script = ExtResource("1_ul8jq")
 upgrade_card_scene = ExtResource("1_0wkf6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_efupt")
+bus = &"sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "in"

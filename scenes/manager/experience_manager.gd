@@ -10,6 +10,7 @@ var current_experience = 0
 var current_level: int = 1
 var target_experience = 1
 
+
 func _ready() -> void:
 	GameEvents.experience_orb_collected.connect(on_experience_orb_collected)
 
@@ -17,7 +18,6 @@ func _ready() -> void:
 func increment_experience(number: float):
 	current_experience += number
 	experience_updated.emit(min(current_experience, target_experience), target_experience)
-	
 	
 	while current_experience >= target_experience:
 		current_level += 1

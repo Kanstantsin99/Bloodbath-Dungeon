@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfqm5jujduf88"]
+[gd_scene load_steps=19 format=3 uid="uid://dfqm5jujduf88"]
 
 [ext_resource type="Texture2D" uid="uid://bx66xsh2dui3w" path="res://scenes/game_object/player/player.png" id="1_5dqgv"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_qdlkj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://tbjt64flgwdn" path="res://scenes/component/velocity_component.tscn" id="2_lp5qq"]
 [ext_resource type="PackedScene" uid="uid://bo8lu3s4w54vn" path="res://scenes/component/health_component.tscn" id="2_qhu4u"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="3_y8xr0"]
+[ext_resource type="AudioStream" uid="uid://d23x42mkdbepy" path="res://assets/audio/hit_1.wav" id="8_royex"]
 
 [sub_resource type="Animation" id="Animation_vq1ml"]
 length = 0.001
@@ -94,7 +95,7 @@ _data = {
 "walk": SubResource("Animation_o0qcx")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcr3e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7kicq"]
 resource_local_to_scene = true
 shader = ExtResource("3_y8xr0")
 shader_parameter/lerp_precent = 0.0
@@ -119,6 +120,11 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ju4ff"]
 radius = 4.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mb6tm"]
+streams_count = 1
+stream_0/stream = ExtResource("8_royex")
+stream_0/weight = 1.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 motion_mode = 1
@@ -136,7 +142,7 @@ acceleration = 10.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_0xnvq")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_lcr3e")
+hit_flash_material = SubResource("ShaderMaterial_7kicq")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qhu4u")]
 
@@ -189,3 +195,8 @@ offset = Vector2(2.08165e-12, -7)
 visible = false
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_ju4ff")
+
+[node name="HitAudioPlayerComponent" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_mb6tm")
+max_distance = 300.0
+bus = &"sfx"
