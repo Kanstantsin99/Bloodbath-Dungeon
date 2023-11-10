@@ -5,6 +5,8 @@
 [node name="SoundButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Some text"
 script = ExtResource("1_e2wxu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

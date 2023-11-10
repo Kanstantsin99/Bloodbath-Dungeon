@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cga4ep3s5n460"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cga4ep3s5n460"]
 
 [ext_resource type="FontFile" uid="uid://ch68eadevux7s" path="res://resources/theme/Bitfantasy.ttf" id="1_iatxc"]
 [ext_resource type="Texture2D" uid="uid://bnc1k0hpgtlmw" path="res://assets/ui/ui.png" id="1_plsnd"]
@@ -13,6 +13,18 @@ texture_margin_bottom = 11.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 region_rect = Rect2(114, 114, 46, 46)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tp8s"]
+texture = ExtResource("1_plsnd")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_left = 2.0
+expand_margin_top = 1.0
+expand_margin_right = 2.0
+expand_margin_bottom = 1.0
+region_rect = Rect2(58, 58, 46, 46)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm2en"]
 bg_color = Color(0.333333, 0.764706, 0.227451, 1)
@@ -64,6 +76,7 @@ default_font = ExtResource("1_iatxc")
 default_font_size = 16
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_kc4bd")
+Button/styles/normal = SubResource("StyleBoxTexture_0tp8s")
 HSlider/icons/grabber = ExtResource("2_86yd6")
 HSlider/icons/grabber_disabled = ExtResource("2_86yd6")
 HSlider/icons/grabber_highlight = ExtResource("2_86yd6")
