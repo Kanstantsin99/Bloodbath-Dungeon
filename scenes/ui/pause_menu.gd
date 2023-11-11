@@ -23,6 +23,10 @@ func close():
 	if is_closing:
 		return
 	
+	if owner.has_node("OptionsMenu"):
+		return
+	
+	
 	is_closing = true
 	$AnimationPlayer.play_backwards("default")
 	
@@ -37,6 +41,8 @@ func on_resume_pressed():
 
 
 func on_options_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
 	var options_instance = options_scene.instantiate()
 	owner.add_child(options_instance)
 	options_instance.back_pressed.connect(on_back_pressed.bind(options_instance))
