@@ -62,9 +62,9 @@ func on_timer_timeout() -> void:
 
 
 func on_arena_difficulty_increased(arena_difficulty: int):
-	var time_off = arena_difficulty * .1 / 12
-	time_off = min(time_off, .7)
+	var time_off = arena_difficulty * .1 / 15 # each 15 sec base_spawn_time - 0.1 
+	time_off = min(time_off, .8)
 	timer.wait_time = base_spawn_time - time_off
 	
-	if arena_difficulty == 5:
+	if arena_difficulty > 5:
 		enemy_table.add_item(wizard_enemy_scene, 20)
