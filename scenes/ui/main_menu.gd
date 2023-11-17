@@ -17,7 +17,7 @@ func on_options_pressed():
 	ScreenTransition.transition()
 	await ScreenTransition.transition_halfway
 	var options_instance = options_scene.instantiate()
-	add_child(options_instance)
+	get_tree().get_root().add_child(options_instance)
 	options_instance.back_pressed.connect(on_back_pressed)
 
 
