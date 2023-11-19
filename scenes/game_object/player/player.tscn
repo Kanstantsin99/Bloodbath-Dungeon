@@ -95,21 +95,21 @@ _data = {
 "walk": SubResource("Animation_o0qcx")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_or4s2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ufpjg"]
 resource_local_to_scene = true
 shader = ExtResource("3_y8xr0")
 shader_parameter/lerp_precent = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ppv6"]
-bg_color = Color(0.447059, 0.447059, 0.447059, 1)
+bg_color = Color(0.596078, 0.619608, 0.560784, 0.34902)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c76kh"]
-bg_color = Color(0.839216, 0, 0.0784314, 1)
+bg_color = Color(0.941176, 0, 0.160784, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.447059, 0.447059, 0.447059, 1)
+border_color = Color(0.447059, 0.447059, 0.447059, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aebbr"]
 radius = 42.0
@@ -142,7 +142,7 @@ acceleration = 10.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_0xnvq")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_or4s2")
+hit_flash_material = SubResource("ShaderMaterial_ufpjg")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_qhu4u")]
 

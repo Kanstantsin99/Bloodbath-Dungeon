@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cga4ep3s5n460"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cga4ep3s5n460"]
 
 [ext_resource type="FontFile" uid="uid://ch68eadevux7s" path="res://resources/theme/Bitfantasy.ttf" id="1_iatxc"]
 [ext_resource type="Texture2D" uid="uid://bnc1k0hpgtlmw" path="res://assets/ui/ui.png" id="1_plsnd"]
@@ -24,7 +24,18 @@ expand_margin_left = 2.0
 expand_margin_top = 1.0
 expand_margin_right = 2.0
 expand_margin_bottom = 1.0
-region_rect = Rect2(58, 58, 46, 46)
+region_rect = Rect2(114, 58, 46, 46)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ygdib"]
+texture = ExtResource("1_plsnd")
+texture_margin_left = 15.0
+texture_margin_top = 17.0
+texture_margin_right = 17.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+region_rect = Rect2(1, 1, 48, 48)
+modulate_color = Color(0.101961, 0.486275, 0.0705882, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm2en"]
 bg_color = Color(0.333333, 0.764706, 0.227451, 1)
@@ -53,18 +64,18 @@ border_color = Color(0.352941, 0.458824, 0.243137, 0)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6hpcp"]
 texture = ExtResource("1_plsnd")
 texture_margin_left = 15.0
-texture_margin_top = 17.0
+texture_margin_top = 11.0
 texture_margin_right = 17.0
 texture_margin_bottom = 15.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 2
-region_rect = Rect2(1, 1, 48, 48)
+region_rect = Rect2(57, 169, 48, 48)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ppv6"]
-bg_color = Color(0.352941, 0.458824, 0.243137, 0.858824)
+bg_color = Color(0.596078, 0.619608, 0.560784, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8e8d"]
-bg_color = Color(0.333333, 0.764706, 0.227451, 1)
+bg_color = Color(0.231373, 0.282353, 0.203922, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -76,7 +87,11 @@ default_font = ExtResource("1_iatxc")
 default_font_size = 16
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_kc4bd")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/styles/normal = SubResource("StyleBoxTexture_0tp8s")
+GreanPanelContainer/base_type = &"PanelContainer"
+GreanPanelContainer/styles/panel = SubResource("StyleBoxTexture_ygdib")
 HSlider/icons/grabber = ExtResource("2_86yd6")
 HSlider/icons/grabber_disabled = ExtResource("2_86yd6")
 HSlider/icons/grabber_highlight = ExtResource("2_86yd6")
