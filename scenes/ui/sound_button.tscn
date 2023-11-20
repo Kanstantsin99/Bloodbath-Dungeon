@@ -5,6 +5,7 @@
 [node name="SoundButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
+text = "Some text"
 script = ExtResource("1_e2wxu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

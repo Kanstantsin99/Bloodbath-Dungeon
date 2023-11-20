@@ -31,8 +31,9 @@ func get_spawn_position():
 	
 	for i in 4:
 		spawn_position = player.global_position + (random_dir * SPAWM_RADIUS)
+		var additional_check_offset = random_dir * 20
 		
-		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1)
+		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + additional_check_offset, 1)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 		
 		if result.is_empty():
@@ -62,9 +63,9 @@ func on_timer_timeout() -> void:
 
 
 func on_arena_difficulty_increased(arena_difficulty: int):
-	var time_off = arena_difficulty * .1 / 12
-	time_off = min(time_off, .7)
+	var time_off = arena_difficulty * .1 / 15 # each 15 sec base_spawn_time - 0.1 
+	time_off = min(time_off, .8)
 	timer.wait_time = base_spawn_time - time_off
 	
-	if arena_difficulty == 5:
+	if arena_difficulty > 5:
 		enemy_table.add_item(wizard_enemy_scene, 20)

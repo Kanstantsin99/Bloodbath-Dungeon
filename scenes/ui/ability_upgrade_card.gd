@@ -21,7 +21,9 @@ func play_in(delay: float = 0):
 	animation_player.play("in")
 
 
-func set_ability_upgrade(upgrade: AbilityUpgrade):
+func set_ability_upgrade(upgrade):
+	if upgrade is Ability:
+		%PanelContainer.modulate = Color("ffd700")
 	name_label.text = upgrade.name
 	description_label.text = upgrade.discription
 
