@@ -5,7 +5,7 @@ var pause_menu = preload("res://scenes/ui/pause_menu.tscn")
 
 
 func _ready() -> void:
-	$%Player.health_component.died.connect(on_player_died)
+	%Player.health_component.died.connect(on_player_died)
 
 
 func _unhandled_input(event: InputEvent) -> void:
