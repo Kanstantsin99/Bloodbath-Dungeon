@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7dr3o1r2k6em"]
+[gd_scene load_steps=5 format=3 uid="uid://b7dr3o1r2k6em"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_y2uax"]
-[ext_resource type="PackedScene" uid="uid://dfqm5jujduf88" path="res://scenes/game_object/player/player.tscn" id="2_cnoea"]
-[ext_resource type="PackedScene" uid="uid://jyk6xfotne06" path="res://scenes/game_object/game_camera/game_camera.tscn" id="3_mgbyo"]
 [ext_resource type="Script" path="res://scenes/main/LevelManager.gd" id="4_2uhyq"]
 [ext_resource type="PackedScene" uid="uid://csw6526jcob6q" path="res://scenes/ui/end_screen.tscn" id="4_rt7th"]
 [ext_resource type="PackedScene" uid="uid://bqbqwkvmakqwx" path="res://scenes/ui/vignette.tscn" id="16_ggcdy"]
@@ -16,15 +14,7 @@ end_screen_scene = ExtResource("4_rt7th")
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("4_2uhyq")
 
-[node name="GameCamera" parent="." instance=ExtResource("3_mgbyo")]
-position = Vector2(320, 180)
-limit_smoothed = true
-
 [node name="Entities" type="Node2D" parent="." groups=["entities_layer"]]
 y_sort_enabled = true
-
-[node name="Player" parent="Entities" instance=ExtResource("2_cnoea")]
-unique_name_in_owner = true
-position = Vector2(320, 180)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

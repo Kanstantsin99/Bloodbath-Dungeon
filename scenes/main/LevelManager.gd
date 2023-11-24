@@ -9,8 +9,11 @@ func _ready() -> void:
 	add_child(main_hub_instance)
 	$MainHub.dungeon_entered.connect(on_dungeoun_entered)
 
+func create_dungeoun_instance():
+	var dungeon_instance = dungeon_scene.instantiate()
+	add_child(dungeon_instance)
+
 
 func on_dungeoun_entered():
 	$MainHub.queue_free()
-	var dungeon_instance = dungeon_scene.instantiate()
-	add_child(dungeon_instance)
+	call_deferred("create_dungeoun_instance")
