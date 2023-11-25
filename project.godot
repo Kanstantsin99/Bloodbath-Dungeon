@@ -29,6 +29,11 @@ config/windows_native_icon="res://icon.ico"
 GameEvents="*res://scenes/autoload/game_events.tscn"
 ScreenTransition="*res://scenes/autoload/screen_transition.tscn"
 MetaProgression="*res://scenes/autoload/meta_progression.tscn"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[dialogue_manager]
+
+general/balloon_path="res://dialogs/balloon.tscn"
 
 [display]
 
@@ -41,10 +46,18 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/size/mode.debug=0
 
+[dotnet]
+
+project/assembly_name="Bloodbath Dungeon"
+
 [editor]
 
 script/search_in_file_extensions=PackedStringArray("gd", "gdshader", "tscn")
 movie_writer/movie_file="/Users/kanstantsin/Desktop/demo.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [gui]
 
@@ -93,6 +106,10 @@ interact={
 ]
 }
 
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogs/dungeoun_enterance.dialogue", "res://dialogs/yan.dialogue", "res://dialogs/crossroad_sign_0.dialogue")
+
 [layer_names]
 
 2d_physics/layer_1="Terrain"
@@ -100,6 +117,7 @@ interact={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Pickable"
 2d_physics/layer_5="EnemyCollision"
+2d_physics/layer_6="Actionables"
 
 [rendering]
 

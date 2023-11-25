@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://d2cupdlpku1d1"
+path="res://.godot/imported/dungeoun_enterance.dialogue-829e35a667616505a5c43c9fbb7e5b55.tres"
+
+[deps]
+
+source_file="res://dialogs/dungeoun_enterance.dialogue"
+dest_files=["res://.godot/imported/dungeoun_enterance.dialogue-829e35a667616505a5c43c9fbb7e5b55.tres"]
+
+[params]
+
+defaults=true

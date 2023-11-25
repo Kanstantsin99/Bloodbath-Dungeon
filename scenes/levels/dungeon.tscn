@@ -44,3 +44,5 @@ layer_0/tile_data = PackedInt32Array(327691, 0, 0, 393227, 0, 0, 393228, 0, 0, 4
 [node name="Player" parent="." instance=ExtResource("13_k0hw5")]
 unique_name_in_owner = true
 position = Vector2(320, 180)
+
+[node name="Entities" type="Node2D" parent="." groups=["entities_layer"]]

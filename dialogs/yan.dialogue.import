@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://dc5kd4tjxdqc1"
+path="res://.godot/imported/yan.dialogue-b201e83fec524327cdc755cfd36a26a0.tres"
+
+[deps]
+
+source_file="res://dialogs/yan.dialogue"
+dest_files=["res://.godot/imported/yan.dialogue-b201e83fec524327cdc755cfd36a26a0.tres"]
+
+[params]
+
+defaults=true

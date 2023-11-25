@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cga4ep3s5n460"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://cga4ep3s5n460"]
 
 [ext_resource type="FontFile" uid="uid://ch68eadevux7s" path="res://resources/theme/Bitfantasy.ttf" id="1_iatxc"]
 [ext_resource type="Texture2D" uid="uid://bnc1k0hpgtlmw" path="res://assets/ui/ui.png" id="1_plsnd"]
@@ -14,6 +14,22 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 region_rect = Rect2(114, 114, 46, 46)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gim4e"]
+texture = ExtResource("1_plsnd")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(114, 170, 46, 46)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hkocm"]
+texture = ExtResource("1_plsnd")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(114, 170, 46, 46)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tp8s"]
 texture = ExtResource("1_plsnd")
 texture_margin_left = 6.0
@@ -24,7 +40,15 @@ expand_margin_left = 2.0
 expand_margin_top = 1.0
 expand_margin_right = 2.0
 expand_margin_bottom = 1.0
-region_rect = Rect2(114, 58, 46, 46)
+region_rect = Rect2(58, 170, 46, 46)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lac66"]
+texture = ExtResource("1_plsnd")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(114, 58, 46, 47)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ygdib"]
 texture = ExtResource("1_plsnd")
@@ -87,9 +111,11 @@ default_font = ExtResource("1_iatxc")
 default_font_size = 16
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_kc4bd")
-Button/colors/font_color = Color(0, 0, 0, 1)
-Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxTexture_gim4e")
+Button/styles/hover = SubResource("StyleBoxTexture_hkocm")
 Button/styles/normal = SubResource("StyleBoxTexture_0tp8s")
+Button/styles/pressed = SubResource("StyleBoxTexture_lac66")
 GreanPanelContainer/base_type = &"PanelContainer"
 GreanPanelContainer/styles/panel = SubResource("StyleBoxTexture_ygdib")
 HSlider/icons/grabber = ExtResource("2_86yd6")

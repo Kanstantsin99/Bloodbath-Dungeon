@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://dbg4k7ki5cfpn"
+path="res://.godot/imported/crossroad_sign_0.dialogue-3c4e5fe6490c4b6a01694b09674ae630.tres"
+
+[deps]
+
+source_file="res://dialogs/crossroad_sign_0.dialogue"
+dest_files=["res://.godot/imported/crossroad_sign_0.dialogue-3c4e5fe6490c4b6a01694b09674ae630.tres"]
+
+[params]
+
+defaults=true

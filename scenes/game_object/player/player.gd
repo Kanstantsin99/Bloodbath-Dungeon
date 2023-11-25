@@ -12,6 +12,7 @@ var number_colliding_bodies = 0
 @onready var visuals: Node2D = $Visuals
 @onready var velocity_component: Node = $VelocityComponent
 @onready var hit_audio_player_component: AudioStreamPlayer2D = $HitAudioPlayerComponent
+@onready var actionable_finder: Area2D = $Direction/ActionableFinder
 
 
 func _ready() -> void:
@@ -28,11 +29,18 @@ func _process(_delta: float) -> void:
 	velocity_component.accelerate_in_direction(direction)
 	velocity_component.move(self)
 	
-	
 	if direction:
 		animation_player.play("walk")
 	else:
 		animation_player.stop()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size() > 0:
+			actionables[0].action()
+			return
 
 
 func get_direction() -> Vector2:
