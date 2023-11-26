@@ -30,6 +30,7 @@ GameEvents="*res://scenes/autoload/game_events.tscn"
 ScreenTransition="*res://scenes/autoload/screen_transition.tscn"
 MetaProgression="*res://scenes/autoload/meta_progression.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+MusicPlayer="*res://scenes/autoload/music_player.tscn"
 
 [dialogue_manager]
 

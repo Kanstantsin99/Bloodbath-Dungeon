@@ -1,5 +1,6 @@
 extends AudioStreamPlayer
 
+@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	finished.connect(on_finished)

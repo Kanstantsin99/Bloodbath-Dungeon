@@ -9,5 +9,6 @@ Player: Пожалуйста, не надо дядя
 - Пирожок
 - Хуй
 Ян: Не угадал...
+set OS.shell_open("https://youtu.be/m4QO5jyEw2E?t=116")
 
 => END

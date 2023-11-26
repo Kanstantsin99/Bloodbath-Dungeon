@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://hov1dvae70y0"]
+[gd_scene load_steps=14 format=3 uid="uid://hov1dvae70y0"]
 
 [ext_resource type="Script" path="res://dialogs/balloon_portraits.gd" id="1_q35vi"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_bomnv"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_mpcog"]
+[ext_resource type="AudioStream" uid="uid://tx07cw1x46lt" path="res://assets/audio/voice_0.wav" id="4_alxcg"]
+[ext_resource type="Texture2D" uid="uid://dpqsa5hwm4q5w" path="res://dialogs/dialogue_indicator.png" id="4_vgjwo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -52,16 +54,51 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
-default_font_size = 20
+default_font_size = 16
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
 Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
 Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
 Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
-MarginContainer/constants/margin_bottom = 15
-MarginContainer/constants/margin_left = 30
-MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 15
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
+
+[sub_resource type="Animation" id="Animation_c3hxd"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(105, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_io01y"]
+resource_name = "indicate"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(103, -0.25, 0, 0.25, 0, 115, -0.25, 0, 0.25, 0, 103, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jbj6e"]
+_data = {
+"RESET": SubResource("Animation_c3hxd"),
+"indicate": SubResource("Animation_io01y")
+}
 
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
@@ -74,7 +111,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 21.0
-offset_top = -183.0
+offset_top = -164.0
 offset_right = -19.0
 offset_bottom = -19.0
 grow_horizontal = 2
@@ -95,8 +132,11 @@ theme_override_constants/separation = 20
 
 [node name="Portrait" type="TextureRect" parent="Balloon/Dialogue/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 2.08165e-12)
+custom_minimum_size = Vector2(112, 112)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Dialogue/HBoxContainer"]
 layout_mode = 2
@@ -117,6 +157,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
+seconds_per_step = 0.04
 
 [node name="Responses" type="MarginContainer" parent="Balloon/Dialogue/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -134,5 +175,33 @@ layout_mode = 2
 focus_mode = 0
 text = "Response example"
 
+[node name="Indicator" type="TextureRect" parent="Balloon"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -40.0
+offset_right = -5.0
+offset_bottom = -0.00109863
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_vgjwo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/Indicator"]
+autoplay = "indicate"
+libraries = {
+"": SubResource("AnimationLibrary_jbj6e")
+}
+
+[node name="TalkSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_alxcg")
+volume_db = -10.0
+pitch_scale = 0.6
+bus = &"sfx"
+
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="Balloon/Dialogue/HBoxContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/Dialogue/HBoxContainer/VBoxContainer/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

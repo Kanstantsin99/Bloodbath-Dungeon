@@ -12,7 +12,6 @@ radius = 17.0
 script = ExtResource("1_kym2r")
 
 [node name="ActionableComponent" parent="." instance=ExtResource("2_3lfnt")]
-collision_mask = 2
 dialogue_resource = ExtResource("3_77b4g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableComponent"]
