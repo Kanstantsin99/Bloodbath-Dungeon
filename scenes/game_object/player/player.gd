@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 
 var number_colliding_bodies = 0
+var base_speed = 0
 
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
 @onready var health_component: Node = $HealthComponent
@@ -16,10 +17,12 @@ var number_colliding_bodies = 0
 
 
 func _ready() -> void:
+	base_speed = velocity_component.max_speed
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
 	health_component.health_changed.connect(on_health_changed)
+	health_component.died.connect(on_player_died)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
 
@@ -80,8 +83,12 @@ func on_health_changed():
 	hit_audio_player_component.play()
 
 
+func on_player_died():
+	GameEvents.emit_player_died()
+
+
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
-	if not ability_upgrade is Ability:
-		return
-	
-	abilities.add_child(ability_upgrade.ability_controller_scene.instantiate())
+	if ability_upgrade is Ability:
+		abilities.add_child(ability_upgrade.ability_controller_scene.instantiate())
+	elif ability_upgrade.id == "player_speed":
+		velocity_component.max_speed = base_speed + (base_speed * _current_upgrades["player_speed"]["quantity"] * .1)

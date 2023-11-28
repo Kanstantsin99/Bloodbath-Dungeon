@@ -4,6 +4,7 @@ extends Node
 signal experience_orb_collected(number: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 signal player_damaged
+signal player_died
 signal dungeon_entered
 
 
@@ -23,5 +24,10 @@ func emit_player_damaged():
 	player_damaged.emit()
 
 
+func emit_player_died():
+	player_died.emit()
+
+
 func emit_dungeon_entered():
 	dungeon_entered.emit()
+

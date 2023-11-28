@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxddy82wh07t0"]
+[gd_scene load_steps=10 format=3 uid="uid://cxddy82wh07t0"]
 
 [ext_resource type="PackedScene" uid="uid://cd1m15ionygu7" path="res://scenes/ui/arena_time_ui.tscn" id="1_fqahi"]
 [ext_resource type="PackedScene" uid="uid://ggmcd4lobw07" path="res://scenes/ui/experience_bar.tscn" id="2_nxg5f"]
@@ -7,10 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://civ5hgdfpnuhk" path="res://scenes/manager/enemy_manager.tscn" id="5_oh2p0"]
 [ext_resource type="PackedScene" uid="uid://cx3p1ndkn18jf" path="res://scenes/manager/experience_manager.tscn" id="6_kog1e"]
 [ext_resource type="PackedScene" uid="uid://dlag0ruwybi13" path="res://scenes/manager/upgrade_manager.tscn" id="7_ju32e"]
-[ext_resource type="Resource" uid="uid://3a824g73qxw1" path="res://resources/upgrades/axe.tres" id="8_fgpjl"]
-[ext_resource type="Resource" uid="uid://ggpj18ab57kc" path="res://resources/upgrades/axe_damage.tres" id="9_kn66m"]
-[ext_resource type="Resource" uid="uid://ygdbxg4f1mdk" path="res://resources/upgrades/sword_damage.tres" id="10_mv15s"]
-[ext_resource type="Resource" uid="uid://dsdavs683b4ig" path="res://resources/upgrades/sword_rate.tres" id="11_a0v4i"]
 [ext_resource type="TileSet" uid="uid://dxb5s6l0io3aq" path="res://resources/monochrome_tilemap.tres" id="12_3ikwp"]
 [ext_resource type="PackedScene" uid="uid://dfqm5jujduf88" path="res://scenes/game_object/player/player.tscn" id="13_k0hw5"]
 
@@ -32,7 +28,6 @@ difficulty_manager = NodePath("../DifficultyManager")
 [node name="ExperienceManager" parent="." instance=ExtResource("6_kog1e")]
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("7_ju32e")]
-upgrade_pool = Array[Resource("res://resources/upgrades/ability_upgrate.gd")]([ExtResource("8_fgpjl"), ExtResource("9_kn66m"), ExtResource("10_mv15s"), ExtResource("11_a0v4i")])
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="TileMap" type="TileMap" parent="."]

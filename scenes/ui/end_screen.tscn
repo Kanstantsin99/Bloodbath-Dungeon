@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://csw6526jcob6q"]
+[gd_scene load_steps=7 format=3 uid="uid://csw6526jcob6q"]
 
 [ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_22tee"]
 [ext_resource type="AudioStream" uid="uid://bjl1k61pf5jny" path="res://assets/audio/card_shufle.wav" id="2_cxl84"]
 [ext_resource type="PackedScene" uid="uid://d1npbx6e1312l" path="res://scenes/ui/sound_button.tscn" id="2_wawbp"]
-[ext_resource type="AudioStream" uid="uid://bl3cqvbuh1mk" path="res://assets/audio/click_0.wav" id="3_4p2un"]
 
 [sub_resource type="Animation" id="Animation_rod8b"]
 resource_name = "in"
@@ -115,11 +114,9 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Restart"
-sound = ExtResource("3_4p2un")
 
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_wawbp")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit
 "
-sound = ExtResource("3_4p2un")

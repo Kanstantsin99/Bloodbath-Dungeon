@@ -5,7 +5,8 @@ const MAX_RANGE = 150
 @export var sword_ability: PackedScene
 @onready var timer = $Timer
 
-var damage = 5
+var base_damage = 5
+var additional_damage_percent = 1
 var base_wait_time: float
 
 
@@ -46,7 +47,7 @@ func on_timer_timeout() -> void:
 	
 	var sword_instance = sword_ability.instantiate() as SwordAbility
 	foreground_layer.add_child(sword_instance)
-	sword_instance.hitbox_component.damage = damage
+	sword_instance.hitbox_component.damage = base_damage * additional_damage_percent
 	
 	sword_instance.global_position = enemies[0].global_position
 	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
@@ -56,9 +57,9 @@ func on_timer_timeout() -> void:
 
 
 func on_ability_upgrade_added(upgrade, current_upgrades):
-	if upgrade.id != "sword_rate":
-		return
-	
-	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
-	timer.wait_time = max(base_wait_time * (1 - percent_reduction), .15)
-	timer.start()
+	if upgrade.id == "sword_rate":
+		var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
+		timer.wait_time = max(base_wait_time * (1 - percent_reduction), .15)
+		timer.start()
+	elif upgrade.id == "sword_damage":
+		additional_damage_percent = 1 + (current_upgrades["sword_damage"]["quantity"] * .15)
