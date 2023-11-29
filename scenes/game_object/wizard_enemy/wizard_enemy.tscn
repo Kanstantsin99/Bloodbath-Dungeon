@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b87wu52bl5dp6" path="res://scenes/component/hit_flash_component.tscn" id="3_23osf"]
 [ext_resource type="PackedScene" uid="uid://c8ogkoxroelx6" path="res://scenes/component/hurtbox_component.tscn" id="4_0jdi3"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="4_7kt0m"]
-[ext_resource type="PackedScene" uid="uid://c8fdnj7hh6dtf" path="res://scenes/component/orb_drop_component.tscn" id="4_y42bi"]
+[ext_resource type="PackedScene" uid="uid://c8fdnj7hh6dtf" path="res://scenes/component/drop_component.tscn" id="4_y42bi"]
 [ext_resource type="AudioStream" uid="uid://x30og6vskbcy" path="res://assets/audio/death_wizard.wav" id="8_bo1b2"]
 [ext_resource type="AudioStream" uid="uid://bufiicw44sysv" path="res://assets/audio/punch.mp3" id="11_qpqcb"]
 
@@ -115,7 +115,7 @@ _data = {
 "walk": SubResource("Animation_ygd51")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4w18f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vhho"]
 resource_local_to_scene = true
 shader = ExtResource("4_7kt0m")
 shader_parameter/lerp_precent = 0.0
@@ -149,9 +149,9 @@ max_health = 20.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_23osf")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_4w18f")
+hit_flash_material = SubResource("ShaderMaterial_3vhho")
 
-[node name="OrbDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_y42bi")]
+[node name="DropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_y42bi")]
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_aa7xg")]

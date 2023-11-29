@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhpyqwq4d52yy"]
+
+[ext_resource type="Texture2D" uid="uid://crebnhu4c81jn" path="res://scenes/game_object/health_potion/health_potion.png" id="1_n4jet"]
+[ext_resource type="Script" path="res://scenes/game_object/health_potion/health_potion.gd" id="1_r0vfn"]
+[ext_resource type="AudioStream" uid="uid://c1uxxg6pa2wa8" path="res://assets/audio/orb_pickup_2.wav" id="2_5agx2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1lui0"]
+radius = 5.0
+
+[node name="HealthPotion" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_r0vfn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_1lui0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.333333, 0.435294, 0.227451, 1)
+texture = ExtResource("1_n4jet")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5agx2")
+volume_db = -20.0
+bus = &"sfx"

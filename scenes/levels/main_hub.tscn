@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://fh2ffoeprwxq" path="res://dialogs/portraits/crossroad_sign.png" id="8_xblb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2k285"]
-size = Vector2(13, 12.5)
+size = Vector2(16, 30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2bp1"]
 radius = 17.0294
@@ -93,10 +93,11 @@ texture = ExtResource("8_xblb1")
 
 [node name="DungeonEnterance" parent="." instance=ExtResource("2_d73b4")]
 unique_name_in_owner = true
-position = Vector2(778, 161)
+position = Vector2(315, 301)
 dialogue_resource = ExtResource("3_ynwym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonEnterance"]
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_2k285")
 
 [node name="Nobody" parent="." instance=ExtResource("2_d73b4")]

@@ -2,6 +2,7 @@ extends Node
 
 
 signal experience_orb_collected(number: float)
+signal health_potion_collected(number: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 signal player_damaged
 signal player_died
@@ -14,6 +15,10 @@ func shut_down():
 
 func emit_experience_orb_collected(number: float):
 	experience_orb_collected.emit(number)
+
+
+func emit_health_potion_collected(number: float):
+	health_potion_collected.emit(number)
 
 
 func emit_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):

@@ -6,7 +6,7 @@ var number_colliding_bodies = 0
 var base_speed = 0
 
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
-@onready var health_component: Node = $HealthComponent
+@onready var health_component: Node = $PlayerHealthComponent
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var abilities: Node = $Abilities
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
