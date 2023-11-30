@@ -13,8 +13,3 @@ end_screen_scene = ExtResource("4_rt7th")
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("4_2uhyq")
-
-[node name="Entities" type="Node2D" parent="." groups=["entities_layer"]]
-y_sort_enabled = true
-
-[node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

@@ -97,7 +97,7 @@ _data = {
 "walk": SubResource("Animation_o0qcx")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2a0n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oxw8s"]
 resource_local_to_scene = true
 shader = ExtResource("3_y8xr0")
 shader_parameter/lerp_precent = 0.0
@@ -106,7 +106,7 @@ shader_parameter/lerp_precent = 0.0
 bg_color = Color(0.596078, 0.619608, 0.560784, 0.34902)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c76kh"]
-bg_color = Color(0.941176, 0, 0.160784, 1)
+bg_color = Color(0.317647, 0.54902, 0.223529, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -148,7 +148,7 @@ acceleration = 10.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_0xnvq")]
 health_component = NodePath("../PlayerHealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_j2a0n")
+hit_flash_material = SubResource("ShaderMaterial_oxw8s")
 
 [node name="Abilities" type="Node" parent="."]
 
@@ -159,6 +159,9 @@ wait_time = 0.5
 one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+light_mask = 0
+z_index = 10
+z_as_relative = false
 custom_minimum_size = Vector2(32, 4)
 offset_left = -16.0
 offset_top = -21.0

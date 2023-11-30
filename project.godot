@@ -15,7 +15,7 @@ config/tags=PackedStringArray("work")
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BloodbathDungeoun"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
@@ -59,6 +59,13 @@ movie_writer/movie_file="/Users/kanstantsin/Desktop/demo.avi"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://scenes/": "red"
+}
 
 [gui]
 

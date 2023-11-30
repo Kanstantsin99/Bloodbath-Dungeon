@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cewbx7ji8ve22"]
+[gd_scene load_steps=20 format=3 uid="uid://cewbx7ji8ve22"]
 
 [ext_resource type="Texture2D" uid="uid://cv3fj6qa743nw" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_7bekw"]
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_h07ey"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://c8fdnj7hh6dtf" path="res://scenes/component/drop_component.tscn" id="4_y42bi"]
 [ext_resource type="AudioStream" uid="uid://x30og6vskbcy" path="res://assets/audio/death_wizard.wav" id="8_bo1b2"]
 [ext_resource type="AudioStream" uid="uid://bufiicw44sysv" path="res://assets/audio/punch.mp3" id="11_qpqcb"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_n6kmp"]
+closed = false
+polygon = PackedVector2Array(-4, 0, -4, -2, 4, -2, 4, 0)
 
 [sub_resource type="Animation" id="Animation_b2gjb"]
 length = 0.001
@@ -115,7 +119,7 @@ _data = {
 "walk": SubResource("Animation_ygd51")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vhho"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmr0y"]
 resource_local_to_scene = true
 shader = ExtResource("4_7kt0m")
 shader_parameter/lerp_precent = 0.0
@@ -128,7 +132,6 @@ radius = 4.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6krn4"]
 streams_count = 1
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("11_qpqcb")
 stream_0/weight = 1.0
 
@@ -137,11 +140,26 @@ collision_layer = 16
 collision_mask = 17
 script = ExtResource("1_h07ey")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_n6kmp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+offset_bottom = 17.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_3il6v")
 }
+autoplay = "walk"
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_dp808")]
 max_health = 20.0
@@ -149,7 +167,7 @@ max_health = 20.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_23osf")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_3vhho")
+hit_flash_material = SubResource("ShaderMaterial_mmr0y")
 
 [node name="DropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_y42bi")]
 health_component = NodePath("../HealthComponent")
@@ -176,6 +194,7 @@ shape = SubResource("CircleShape2D_hahfn")
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 texture = ExtResource("1_7bekw")
 offset = Vector2(2.08165e-12, -7)
+region_rect = Rect2(409, 17, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
