@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c736s8cygp03f"]
+
+[ext_resource type="Texture2D" uid="uid://hici7bi8rys" path="res://assets/environment/monochrome.png" id="1_tr5wv"]
+
+[sub_resource type="Gradient" id="Gradient_06caw"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.140143, 0.311164, 0.688836)
+colors = PackedColorArray(1, 1, 1, 1, 0.439024, 0.439024, 0.439024, 1, 0.250871, 0.250871, 0.250871, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8tc7c"]
+gradient = SubResource("Gradient_06caw")
+width = 640
+height = 360
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Bonfire" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tr5wv")
+region_enabled = true
+region_rect = Rect2(238, 171, 16, 16)
+
+[node name="PointLight2D2" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-7.62939e-06, -1.52588e-05)
+scale = Vector2(1.10703, 1.25833)
+color = Color(1, 0.788235, 0.635294, 1)
+energy = 3.0
+shadow_color = Color(0, 0, 0, 0.462745)
+texture = SubResource("GradientTexture2D_8tc7c")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://c80fl2h06jpv"
+path="res://.godot/imported/chicken.dialogue-a3b47861e0f62d8b44155f6faa52180e.tres"
+
+[deps]
+
+source_file="res://dialogs/chicken.dialogue"
+dest_files=["res://.godot/imported/chicken.dialogue-a3b47861e0f62d8b44155f6faa52180e.tres"]
+
+[params]
+
+defaults=true

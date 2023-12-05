@@ -103,7 +103,18 @@ shader = ExtResource("3_y8xr0")
 shader_parameter/lerp_precent = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ppv6"]
-bg_color = Color(0.596078, 0.619608, 0.560784, 0.34902)
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c76kh"]
 bg_color = Color(0.317647, 0.54902, 0.223529, 1)
@@ -164,9 +175,9 @@ z_index = 10
 z_as_relative = false
 custom_minimum_size = Vector2(32, 4)
 offset_left = -16.0
-offset_top = -21.0
+offset_top = -24.0
 offset_right = 16.0
-offset_bottom = -17.0
+offset_bottom = -19.0
 pivot_offset = Vector2(16, 2)
 theme_override_styles/background = SubResource("StyleBoxFlat_3ppv6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_c76kh")

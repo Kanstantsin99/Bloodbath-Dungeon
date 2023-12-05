@@ -15,7 +15,7 @@ func start(text: String):
 	
 	tween.tween_property(self, "global_position", global_position + (Vector2.UP * 16), .3)\
 	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "scale", Vector2.ONE * 1.5, .3)\
+	tween.tween_property(self, "scale", Vector2.ONE * 1, .3)\
 	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	
 	tween.chain()

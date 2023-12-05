@@ -8,7 +8,7 @@ var drop_table = WeightedTable.new()
 
 
 func _ready() -> void:
-	drop_table.add_item(health_scene, 5)
+	drop_table.add_item(health_scene, 1)
 	drop_table.add_item(orb_scene, 10)
 	health_component.died.connect(on_died)
 

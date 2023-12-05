@@ -1,12 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://civ5hgdfpnuhk"]
+[gd_scene load_steps=3 format=3 uid="uid://civ5hgdfpnuhk"]
 
 [ext_resource type="Script" path="res://scenes/manager/enemy_manager.gd" id="1_xlbun"]
-[ext_resource type="PackedScene" uid="uid://yfvw6ogtjce5" path="res://scenes/game_object/rat_enemy/rat_enemy.tscn" id="2_5whn0"]
 [ext_resource type="PackedScene" uid="uid://cewbx7ji8ve22" path="res://scenes/game_object/wizard_enemy/wizard_enemy.tscn" id="3_lldja"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_xlbun")
-basic_enemy_scene = ExtResource("2_5whn0")
 wizard_enemy_scene = ExtResource("3_lldja")
 
 [node name="Timer" type="Timer" parent="."]

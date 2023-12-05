@@ -94,7 +94,8 @@ streams_count = 1
 stream_0/stream = ExtResource("11_2stwb")
 stream_0/weight = 1.0
 
-[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="Rat" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.8, 0.8)
 collision_layer = 16
 collision_mask = 17
 motion_mode = 1
@@ -122,7 +123,7 @@ drop_procent = 0.35
 health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("6_rdblm")]
-max_speed = 100
+max_speed = 70
 acceleration = 2.0
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_7r16g")]

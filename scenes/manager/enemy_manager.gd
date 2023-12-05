@@ -2,7 +2,7 @@ extends Node
 
 const SPAWM_RADIUS = 350
 
-@export var basic_enemy_scene: PackedScene
+@export var rat_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
 @export var difficulty_manager: DifficultyManager
 var base_spawn_time: float
@@ -14,7 +14,7 @@ var enemy_table = WeightedTable.new()
 
 func _ready() -> void:
 	timer.start()
-	enemy_table.add_item(basic_enemy_scene, 10)
+	enemy_table.add_item(rat_enemy_scene, 10)
 	base_spawn_time = timer.wait_time
 	timer.timeout.connect(on_timer_timeout)
 	difficulty_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
@@ -63,9 +63,9 @@ func on_timer_timeout() -> void:
 
 
 func on_arena_difficulty_increased(arena_difficulty: int):
-	var time_off = arena_difficulty * .1 / 15 # each 15 sec base_spawn_time - 0.1 
+	var time_off = arena_difficulty * .1 / 30 # each 30 sec base_spawn_time - 0.1 
 	time_off = min(time_off, .8)
 	timer.wait_time = base_spawn_time - time_off
 	
-	if arena_difficulty > 5:
-		enemy_table.add_item(wizard_enemy_scene, 20)
+	if arena_difficulty == 30:
+		enemy_table.add_item(wizard_enemy_scene, 5)

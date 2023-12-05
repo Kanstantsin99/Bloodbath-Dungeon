@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://5ktlj2n1tlot"]
+[gd_scene load_steps=10 format=3 uid="uid://5ktlj2n1tlot"]
 
 [ext_resource type="Texture2D" uid="uid://cuagtmsevy73p" path="res://scenes/game_object/chicken/chicken.png" id="1_w276m"]
 [ext_resource type="Script" path="res://scenes/game_object/chicken/chicken.gd" id="1_yyip0"]
+[ext_resource type="PackedScene" uid="uid://cohqceu21i88m" path="res://scenes/component/actionable_component.tscn" id="3_idw0q"]
+[ext_resource type="Resource" uid="uid://c80fl2h06jpv" path="res://dialogs/chicken.dialogue" id="4_7jtes"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sfj6m"]
 radius = 6.0
@@ -92,6 +94,9 @@ _data = {
 "idle": SubResource("Animation_yysd8")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76gsn"]
+size = Vector2(30, 30)
+
 [node name="Chicken" type="CharacterBody2D"]
 script = ExtResource("1_yyip0")
 
@@ -105,7 +110,14 @@ texture = ExtResource("1_w276m")
 offset = Vector2(2.08165e-12, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_76t2v")
 }
+autoplay = "idle"
+
+[node name="ActionableComponent" parent="." instance=ExtResource("3_idw0q")]
+dialogue_resource = ExtResource("4_7jtes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableComponent"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_76gsn")
