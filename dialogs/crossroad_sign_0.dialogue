@@ -1,6 +1,6 @@
 ~ start
 
-Crossroad_Sign: [#happy] ← on your left is [i]The Smalldy Vilage[/i], [wait=1.5s] 
+Crossroad Sign: [#sound=false] ← on your left is [i]The Smalldy Vilage[/i], [wait=1.5s] 
 	→ on your right is The Dungeon enterance, [wait=3s]
 	↑ forward is The Greate Castle
 Player: А я сосу хуй
