@@ -1,0 +1,57 @@
+~ start
+
+if DialogueEvents.was_rude_lisa == true:
+	=> you_was_rude
+
+Lisa: [if DialogueEvents.know_name_lisa == false][#name=Woman][/if] [[Hello|Hi]] stranger! 
+
+if DialogueEvents.children_was_found == true:
+	=> after_children_was_found
+
+Lisa: [if not DialogueEvents.know_name_lisa][#name=Woman][/if] Did you saw my son, Viliam? I send Katty to find that obnoxious boy, but she did't come back.
+- Tell that you saw them [if DialogueEvents.talked_with_kids == true]
+	{{DialogueEvents.player_name}}: Yes, I saw them. 
+	{{DialogueEvents.player_name}}: From what I understood, they were going to go home. 
+	=> children_was_found
+- To comfort
+	{{DialogueEvents.player_name}}: Hi. Unfortunately not. But they'll be fine.
+	=> children_was_not_found
+- Be rude
+	{{DialogueEvents.player_name}}: No, I didn't saw them.
+	{{DialogueEvents.player_name}}: Perhaps they will die in agony.
+	set DialogueEvents.was_rude_lisa = true
+	=> you_was_rude
+
+=> END
+
+
+~ children_was_found
+
+Lisa: Thank you, stranger! My name is Lisa by the way. Come to us next time.
+	May be I cook something tastful for you.
+set DialogueEvents.children_was_found = true
+set DialogueEvents.know_name_lisa = true
+
+=> END
+
+
+~ after_children_was_found
+
+Lisa: Thank you again, Stranger! I'll wait my children.
+
+=> END
+
+
+~ children_was_not_found
+
+Lisa: Thank you, stranger. My name is Lisa by the way. Tell me if you find them.
+set DialogueEvents.know_name_lisa = true
+
+=> END
+
+
+~ you_was_rude
+
+Lisa: [#name=Woman] [shake rate=50 level=10]FUCK YOUR SELF[/shake]!
+
+=> END

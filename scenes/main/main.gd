@@ -9,6 +9,7 @@ var pause_menu = preload("res://scenes/ui/pause_menu.tscn")
 func _ready() -> void:
 	level_manager.child_entered_tree.connect(on_level_loaded)
 	GameEvents.player_died.connect(on_player_died)
+	
 
 
 func _unhandled_input(event: InputEvent) -> void:

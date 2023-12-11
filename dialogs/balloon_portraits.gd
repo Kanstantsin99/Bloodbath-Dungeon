@@ -39,7 +39,10 @@ var dialogue_line: DialogueLine:
 		dialogue_line = next_dialogue_line
 
 		character_label.visible = not dialogue_line.character.is_empty()
-		character_label.text = tr(dialogue_line.character, "dialogue")
+		if !dialogue_line.get_tag_value("name").is_empty():
+			character_label.text = tr(dialogue_line.get_tag_value("name"), "dialogue")
+		else:
+			character_label.text = tr(dialogue_line.character, "dialogue")
 		var portrait_path: String = "res://dialogs/portraits/%s.png" % dialogue_line.character.to_lower()
 		if ResourceLoader.exists(portrait_path):
 			portrait.texture = load(portrait_path)

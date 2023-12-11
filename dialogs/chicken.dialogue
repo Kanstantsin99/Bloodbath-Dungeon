@@ -1,5 +1,5 @@
 ~ start
 
-Player: Что-то определенно не так с этими курицами...
+{{DialogueEvents.player_name}}: Something is definitely wrong with these chickens...
 
 => END

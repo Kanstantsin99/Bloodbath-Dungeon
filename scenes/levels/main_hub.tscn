@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dye1f5vvyb5sw"]
+[gd_scene load_steps=20 format=3 uid="uid://dye1f5vvyb5sw"]
 
 [ext_resource type="Script" path="res://scenes/levels/main_hub.gd" id="1_i4a84"]
 [ext_resource type="TileSet" uid="uid://dxb5s6l0io3aq" path="res://resources/monochrome_tilemap.tres" id="1_y33l1"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://fh2ffoeprwxq" path="res://dialogs/portraits/crossroad sign.png" id="8_xblb1"]
 [ext_resource type="Resource" uid="uid://ciwxj6i5n5eji" path="res://dialogs/guards.dialogue" id="9_gw5fe"]
 [ext_resource type="Resource" uid="uid://rlb84g5nsf8t" path="res://dialogs/kids_0.dialogue" id="10_spvlt"]
+[ext_resource type="Resource" uid="uid://kr4wb1wm1hsq" path="res://dialogs/lisa.dialogue" id="12_sysvu"]
+[ext_resource type="Resource" uid="uid://b20simd2r312k" path="res://dialogs/farmer_0.dialogue" id="13_pvwaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rgok"]
 size = Vector2(47, 47)
@@ -23,6 +25,11 @@ size = Vector2(40, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2bp1"]
 radius = 17.0294
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sq0j4"]
+size = Vector2(30, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o436a"]
 
 [node name="MainHub" type="Node"]
 script = ExtResource("1_i4a84")
@@ -40,7 +47,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="World" instance=ExtResource("3_uqjo5")]
 unique_name_in_owner = true
-position = Vector2(314, 419)
+position = Vector2(-102, 224)
 
 [node name="TileMap" type="TileMap" parent="World"]
 y_sort_enabled = true
@@ -132,3 +139,25 @@ dialogue_resource = ExtResource("6_0e4w6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Nobody"]
 shape = SubResource("CircleShape2D_u2bp1")
+
+[node name="Lisa" parent="Interactables" instance=ExtResource("2_d73b4")]
+position = Vector2(-98, 192)
+dialogue_resource = ExtResource("12_sysvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Lisa"]
+position = Vector2(-4, 2)
+shape = SubResource("RectangleShape2D_sq0j4")
+
+[node name="Farmer" parent="Interactables" instance=ExtResource("2_d73b4")]
+position = Vector2(90, 256)
+dialogue_resource = ExtResource("13_pvwaj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Farmer"]
+shape = SubResource("RectangleShape2D_o436a")
+
+[node name="Farmer2" parent="Interactables" instance=ExtResource("2_d73b4")]
+position = Vector2(-134, 288)
+dialogue_resource = ExtResource("13_pvwaj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Farmer2"]
+shape = SubResource("RectangleShape2D_o436a")

@@ -1,17 +1,42 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf5kenk2o3gk4"]
+[gd_scene load_steps=14 format=3 uid="uid://cf5kenk2o3gk4"]
 
 [ext_resource type="Texture2D" uid="uid://cu3fsyg7dbc3x" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_o87wi"]
 [ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_xhope"]
+[ext_resource type="Texture2D" uid="uid://hici7bi8rys" path="res://assets/environment/monochrome.png" id="3_644m7"]
 
 [sub_resource type="Animation" id="Animation_hdcrl"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/path = NodePath("GPUParticles2DLeft:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2DRight:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2DBlood:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -23,7 +48,7 @@ resource_name = "default"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/path = NodePath("GPUParticles2DLeft:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,8 +68,32 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"queue_free"
+"method": &"_queue_free"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2DRight:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2DBlood:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gmih0"]
@@ -62,18 +111,53 @@ curve = SubResource("Curve_red6a")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vwb4c"]
 particle_flag_disable_z = true
-direction = Vector3(2.08165e-12, -1, 2.08165e-12)
-spread = 30.0
+direction = Vector3(-1, -1, 2.08165e-12)
+spread = 20.0
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+angular_velocity_min = 320.0
+angular_velocity_max = 320.0
 gravity = Vector3(0, 98, 0)
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_dtgtk")
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dkqs3"]
+particle_flag_disable_z = true
+direction = Vector3(1, -1, 2.08165e-12)
+spread = 30.0
 initial_velocity_min = 30.0
 initial_velocity_max = 50.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+angular_velocity_min = -320.0
+angular_velocity_max = 1.4988e-14
+gravity = Vector3(0, 98, 0)
+attractor_interaction_enabled = false
 scale_curve = SubResource("CurveTexture_dtgtk")
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pdw6e"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.1, 0.1, 1)
+direction = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="Gradient" id="Gradient_wfvwt"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.339667, 0.425178)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hltab"]
+gradient = SubResource("Gradient_wfvwt")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.519231, 0.49359)
 
 [node name="DeathComponent" type="Node2D"]
+position = Vector2(312, 183)
 script = ExtResource("1_xhope")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -81,7 +165,7 @@ libraries = {
 "": SubResource("AnimationLibrary_gmih0")
 }
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2DLeft" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_vwb4c")
@@ -91,6 +175,34 @@ one_shot = true
 fixed_fps = 0
 interpolate = false
 
+[node name="GPUParticles2DRight" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_dkqs3")
+texture = ExtResource("1_o87wi")
+lifetime = 0.75
+one_shot = true
+fixed_fps = 0
+interpolate = false
+
+[node name="GPUParticles2DBlood" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_pdw6e")
+texture = SubResource("GradientTexture2D_hltab")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.0
 bus = &"sfx"
+
+[node name="BloodSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+top_level = true
+texture = ExtResource("3_644m7")
+region_enabled = true
+region_rect = Rect2(103, 0, 14, 15)

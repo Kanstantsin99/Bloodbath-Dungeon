@@ -8,6 +8,3 @@ signal dungeon_entered
 
 func _ready() -> void:
 	player.health_bar.visible = false
-
-	
-	

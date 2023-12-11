@@ -31,6 +31,7 @@ ScreenTransition="*res://scenes/autoload/screen_transition.tscn"
 MetaProgression="*res://scenes/autoload/meta_progression.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 MusicPlayer="*res://scenes/autoload/music_player.tscn"
+DialogueEvents="*res://scenes/autoload/dialogue_events.tscn"
 
 [dialogue_manager]
 
@@ -116,7 +117,7 @@ interact={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogs/dungeoun_enterance.dialogue", "res://dialogs/yan.dialogue", "res://dialogs/crossroad_sign_0.dialogue", "res://dialogs/kids_0.dialogue", "res://dialogs/guards.dialogue", "res://dialogs/chicken.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogs/dungeoun_enterance.dialogue", "res://dialogs/yan.dialogue", "res://dialogs/crossroad_sign_0.dialogue", "res://dialogs/kids_0.dialogue", "res://dialogs/guards.dialogue", "res://dialogs/chicken.dialogue", "res://dialogs/farmer_0.dialogue", "res://dialogs/farmer.dialogue", "res://dialogs/lisa.dialogue")
 
 [layer_names]
 

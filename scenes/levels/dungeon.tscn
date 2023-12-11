@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxddy82wh07t0"]
+[gd_scene load_steps=17 format=3 uid="uid://cxddy82wh07t0"]
 
 [ext_resource type="PackedScene" uid="uid://cd1m15ionygu7" path="res://scenes/ui/arena_time_ui.tscn" id="1_fqahi"]
 [ext_resource type="PackedScene" uid="uid://ggmcd4lobw07" path="res://scenes/ui/experience_bar.tscn" id="2_nxg5f"]
@@ -15,11 +15,23 @@
 
 [sub_resource type="Gradient" id="Gradient_xccbw"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.140143, 0.311164, 0.688836)
+offsets = PackedFloat32Array(0, 0.181208, 0.352349, 0.540268)
 colors = PackedColorArray(1, 1, 1, 1, 0.439024, 0.439024, 0.439024, 1, 0.250871, 0.250871, 0.250871, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2u0h2"]
 gradient = SubResource("Gradient_xccbw")
+width = 640
+height = 360
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_uevla"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.322148, 0.892617, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.250871, 0.250871, 0.250871, 1, 0.439024, 0.439024, 0.439024, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a2e06"]
+gradient = SubResource("Gradient_uevla")
 width = 640
 height = 360
 fill = 1
@@ -84,9 +96,20 @@ position = Vector2(-7.62939e-06, -1.52588e-05)
 scale = Vector2(1.10703, 1.25833)
 color = Color(1, 0.788235, 0.635294, 1)
 energy = 3.0
-blend_mode = 2
 shadow_color = Color(0, 0, 0, 0.462745)
 texture = SubResource("GradientTexture2D_2u0h2")
 texture_scale = 2.0
 
+[node name="PointLight2D2" type="PointLight2D" parent="Entities/Player/light"]
+position = Vector2(-7.62939e-06, -1.52588e-05)
+scale = Vector2(1.10703, 1.25833)
+color = Color(1, 0.788235, 0.635294, 1)
+energy = 3.0
+blend_mode = 1
+shadow_color = Color(0, 0, 0, 0.462745)
+texture = SubResource("GradientTexture2D_a2e06")
+texture_scale = 2.0
+
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
+
+[node name="Blood" type="Node2D" parent="." groups=["blood_layer"]]

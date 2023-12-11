@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal back_pressed
 
+var default_volume = 0.5
+
 @onready var window_button: Button = %WindowButton
 @onready var sfx_slider: HSlider = %SFXSlider
 @onready var music_slider: HSlider = %MusicSlider

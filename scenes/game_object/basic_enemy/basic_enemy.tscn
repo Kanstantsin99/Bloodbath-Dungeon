@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cf5kenk2o3gk4" path="res://scenes/component/death_component.tscn" id="2_0sc2e"]
 [ext_resource type="PackedScene" uid="uid://bo8lu3s4w54vn" path="res://scenes/component/health_component.tscn" id="2_3j1di"]
 [ext_resource type="PackedScene" uid="uid://tbjt64flgwdn" path="res://scenes/component/velocity_component.tscn" id="2_tfm3d"]
-[ext_resource type="PackedScene" uid="uid://c8fdnj7hh6dtf" path="res://scenes/component/orb_drop_component.tscn" id="3_tr4he"]
+[ext_resource type="PackedScene" uid="uid://c8fdnj7hh6dtf" path="res://scenes/component/drop_component.tscn" id="3_tr4he"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="4_cl8rr"]
 [ext_resource type="PackedScene" uid="uid://c8ogkoxroelx6" path="res://scenes/component/hurtbox_component.tscn" id="4_yibmc"]
 [ext_resource type="Texture2D" uid="uid://cu3fsyg7dbc3x" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="5_atp6r"]
@@ -85,9 +85,8 @@ shader_parameter/lerp_precent = 0.0
 radius = 5.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3aikx"]
-streams_count = 1
 random_pitch = 1.3
-random_volume_offset_db = 0.0
+streams_count = 1
 stream_0/stream = ExtResource("11_x8t1q")
 stream_0/weight = 1.0
 
@@ -98,10 +97,10 @@ motion_mode = 1
 script = ExtResource("1_h1lst")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_3il6v")
 }
+autoplay = "walk"
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_3j1di")]
 

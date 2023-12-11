@@ -100,7 +100,7 @@ _data = {
 "indicate": SubResource("Animation_io01y")
 }
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="BalloonPortraits" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_q35vi")
 
@@ -182,19 +182,19 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -45.0
-offset_top = -40.0
-offset_right = -5.0
-offset_bottom = -0.00109863
+offset_left = 4755.0
+offset_top = 105.0
+offset_right = 4795.0
+offset_bottom = 144.999
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("4_vgjwo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/Indicator"]
-autoplay = "indicate"
 libraries = {
 "": SubResource("AnimationLibrary_jbj6e")
 }
+autoplay = "indicate"
 
 [node name="TalkSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_alxcg")

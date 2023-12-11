@@ -1,23 +1,15 @@
 ~ start
 
-Девочка: Эдвард, опять ты сбежал из деревни! Мама и папа очень волнуются!
-
-Мальчик: А что, Вероника, это всего лишь немного приключений. Деревня слишком скучна!
-
-Вероника: Скучна? Ты каждый раз ставишь нас в беду своими исследованиями леса. Что, если там есть какие-то опасности?
-
-Мальчик: Опасности? Там так интересно! Я нашел диковинное растение и странный след.
-
-Вероника: Но ты не знаешь, что там может быть! Что, если это какое-то чудовище?
-
-Мальчик: Ну, тогда я его победил бы! Я сильный рыцарь!
-
-Вероника: Ты и рыцарем-то не являешься! Ты просто неразумный брат, который всегда попадает в беды.
-
-Мальчик: Ну ладно, ладно, не сердись. Я принесу тебе что-нибудь интересное из леса, как ты любишь. Обещаю, больше не буду сбегать.
-
-Вероника: Обещаешь?
-
-Мальчик: Обещаю, сестричка.
+do DialogueEvents.talked_with_kids = true
+Girl: Edward, you ran away from the village again! Mom and Dad are very worried!
+Boy: Well, Veronica, it's just a little adventure. The village is too boring!
+Veronica: Boring? You put us in trouble every time you explore the forest. What if there are some dangers there?
+Boy: Danger? It's so interesting there! I found a strange plant and a strange trail.
+Veronica: But you don't know what might be there! What if it's some kind of monster?
+Boy: Well, then I would have beaten him! I am a strong knight!
+Veronika: You're not even a knight! You're just an unreasonable brother who always gets into trouble.
+Boy: Okay, okay, don't get mad. I'll bring you something interesting from the forest, the way you like it. I promise I won't run away anymore.
+Veronica: Do you promise?
+Boy: I promise, sister.
 
 => END
