@@ -46,6 +46,7 @@ var dialogue_line: DialogueLine:
 		var portrait_path: String = "res://dialogs/portraits/%s.png" % dialogue_line.character.to_lower()
 		if ResourceLoader.exists(portrait_path):
 			portrait.texture = load(portrait_path)
+			portrait.custom_minimum_size = Vector2(112, 112)
 		else:
 			portrait.texture = null
 			portrait.custom_minimum_size = Vector2.ZERO
@@ -144,5 +145,12 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 func _on_dialogue_label_spoke(letter, letter_index, speed) -> void:
 	if not letter in [".", " "]:
-		talk_sound.pitch_scale = randf_range(0.5, 0.6)
-		talk_sound.play()
+		match dialogue_line.get_tag_value("sex"):
+			"male":
+				talk_sound.pitch_scale = randf_range(0.5, 0.6)
+				talk_sound.play()
+			"female":
+				talk_sound.pitch_scale = randf_range(0.8, 1)
+				talk_sound.play()
+			_:
+				pass

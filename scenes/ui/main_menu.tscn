@@ -24,7 +24,7 @@ layer_1/tile_data = PackedInt32Array(1179656, 327680, 0, 1114121, 327680, 0, 117
 layer_2/name = "entities"
 layer_2/tile_data = PackedInt32Array(1114150, 131072, 14, 1114148, 65536, 14, 1245220, 131072, 14, 1245222, 65536, 14, 1114146, 131072, 14, 1114144, 65536, 14, 1245216, 131072, 14, 1245218, 65536, 14, 1310756, 262144, 15, 1179682, 262144, 15, 1179686, 262144, 15, 1310752, 196608, 15, 1310758, 196608, 15, 524318, 0, 15, 524325, 0, 15, 720930, 0, 15, 786462, 65536, 15, 589857, 65536, 15, 786470, 65536, 15, 917538, 65536, 15)
 
-[node name="Chicken3" parent="TileMap" instance=ExtResource("4_kpsbn")]
+[node name="Chicken" parent="TileMap" instance=ExtResource("4_kpsbn")]
 position = Vector2(157, 296)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -83,7 +83,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/NewGameBox"]
 layout_mode = 2
-text = "Name Your Charactor"
+text = "Name Your Character"
 horizontal_alignment = 1
 
 [node name="PlayerName" type="TextEdit" parent="MarginContainer/PanelContainer/MarginContainer/NewGameBox"]

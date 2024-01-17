@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cf5kenk2o3gk4"]
+[gd_scene load_steps=38 format=3 uid="uid://cf5kenk2o3gk4"]
 
 [ext_resource type="Texture2D" uid="uid://cu3fsyg7dbc3x" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_o87wi"]
 [ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_xhope"]
-[ext_resource type="Texture2D" uid="uid://hici7bi8rys" path="res://assets/environment/monochrome.png" id="3_644m7"]
+[ext_resource type="Texture2D" uid="uid://ctaj2x1wy82jy" path="res://assets/environment/blood/blood_anim_3.png" id="3_3iot3"]
+[ext_resource type="Texture2D" uid="uid://d176iisatjw35" path="res://assets/environment/blood/blood_stain_0.png" id="3_nucw4"]
+[ext_resource type="Script" path="res://scripts/blood_random.gd" id="4_kyv84"]
 
 [sub_resource type="Animation" id="Animation_hdcrl"]
 length = 0.001
@@ -25,18 +27,6 @@ tracks/1/path = NodePath("GPUParticles2DRight:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GPUParticles2DBlood:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -83,18 +73,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GPUParticles2DBlood:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gmih0"]
 _data = {
@@ -135,26 +113,181 @@ attractor_interaction_enabled = false
 scale_curve = SubResource("CurveTexture_dtgtk")
 color = Color(1, 0, 0, 1)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pdw6e"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(0.1, 0.1, 1)
-direction = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
-spread = 180.0
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mphd2"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="Gradient" id="Gradient_wfvwt"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.339667, 0.425178)
-colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq6ra"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hltab"]
-gradient = SubResource("Gradient_wfvwt")
-width = 8
-height = 8
-fill = 1
-fill_from = Vector2(0.519231, 0.49359)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kspn"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u8ny"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8noq"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj5s6"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnu57"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa6k8"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_girdb"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n74qw"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(300, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpaua"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(400, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okpex"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(500, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qmn1"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04t74"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7vhm"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trcyb"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(300, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4yl8"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(400, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2kej"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(500, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t51hg"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(0, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dv76"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(100, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ujlm"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(200, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kux6l"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(300, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uqko"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(400, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15vwp"]
+atlas = ExtResource("3_3iot3")
+region = Rect2(500, 300, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_675d6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mphd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq6ra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kspn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u8ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8noq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj5s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnu57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa6k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_girdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n74qw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpaua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okpex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qmn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04t74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7vhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trcyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4yl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2kej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t51hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dv76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ujlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kux6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uqko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15vwp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 21.0
+}]
 
 [node name="DeathComponent" type="Node2D"]
 position = Vector2(312, 183)
@@ -185,24 +318,16 @@ one_shot = true
 fixed_fps = 0
 interpolate = false
 
-[node name="GPUParticles2DBlood" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_pdw6e")
-texture = SubResource("GradientTexture2D_hltab")
-lifetime = 0.2
-one_shot = true
-explosiveness = 1.0
-fixed_fps = 0
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.0
 bus = &"sfx"
 
-[node name="BloodSprite" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_675d6")
+frame = 23
+frame_progress = 1.0
+
+[node name="BloodStain" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(1, 0, 0, 1)
-top_level = true
-texture = ExtResource("3_644m7")
-region_enabled = true
-region_rect = Rect2(103, 0, 14, 15)
+texture = ExtResource("3_nucw4")
+script = ExtResource("4_kyv84")

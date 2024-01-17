@@ -7,7 +7,7 @@ var body1: AtlasTexture
 var body2: AtlasTexture
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var blood_sprite: Sprite2D = $BloodSprite
+@onready var blood_stain: Sprite2D = $BloodStain
 
 
 func _ready() -> void:
@@ -30,25 +30,25 @@ func cut_sprite() -> void:
 func on_died():
 	if owner == null || not owner is Node2D:
 		return
-		
+	
 	var spawn_position = owner.global_position
 	
-	var bloods = get_tree().get_first_node_in_group("blood_layer")
+	var blood = get_tree().get_first_node_in_group("blood_layer")
 	get_parent().remove_child(self)
-	
-	
-	remove_child($BloodSprite)
-	bloods.add_child(self)
-	
+	blood.add_child(self)
 	
 	global_position = spawn_position
-	$AnimationPlayer.play("default")
+	$AnimatedSprite2D.play("default")
 	audio_stream_player_2d.play()
-	blood_sprite.visible = true
+	$GPUParticles2DLeft.emitting = true
+	$GPUParticles2DRight.emitting = true
+	blood_stain.visible = true
 
 
 func _queue_free():
 	$AnimationPlayer.queue_free()
+	body1 = null
+	body2 = null
 	$GPUParticles2DLeft.queue_free()
 	$GPUParticles2DRight.queue_free()
 	$GPUParticles2DBlood.queue_free()

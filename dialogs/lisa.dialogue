@@ -3,12 +3,12 @@
 if DialogueEvents.was_rude_lisa == true:
 	=> you_was_rude
 
-Lisa: [if DialogueEvents.know_name_lisa == false][#name=Woman][/if] [[Hello|Hi]] stranger! 
+Lisa: [#name=Woman] [#sex=female] [[Hello|Hi]] stranger! 
 
 if DialogueEvents.children_was_found == true:
 	=> after_children_was_found
 
-Lisa: [if not DialogueEvents.know_name_lisa][#name=Woman][/if] Did you saw my son, Viliam? I send Katty to find that obnoxious boy, but she did't come back.
+Lisa: [#sex=female] [if not DialogueEvents.know_name_lisa][#name=Woman][/if] Did you saw my son, Viliam? I send Katty to find that obnoxious boy, but she did't come back.
 - Tell that you saw them [if DialogueEvents.talked_with_kids == true]
 	{{DialogueEvents.player_name}}: Yes, I saw them. 
 	{{DialogueEvents.player_name}}: From what I understood, they were going to go home. 
