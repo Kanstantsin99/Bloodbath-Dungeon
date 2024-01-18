@@ -5,6 +5,7 @@ signal experience_orb_collected(number: float)
 signal health_potion_collected(number: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 signal player_damaged
+signal player_healed
 signal player_died
 signal dungeon_entered
 
@@ -27,6 +28,10 @@ func emit_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dicti
 
 func emit_player_damaged():
 	player_damaged.emit()
+
+
+func emit_player_healed():
+	player_healed.emit()
 
 
 func emit_player_died():

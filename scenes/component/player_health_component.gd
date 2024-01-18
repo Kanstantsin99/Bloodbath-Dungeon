@@ -2,39 +2,48 @@ extends Node
 class_name PlayerHealthComponent
 
 signal died
+signal healed
+signal damaged
 signal health_changed
 
-@export var max_health: float = 10
-var current_health
+@export var max_health := 10:
+	set = set_max_health
+var health = max_health:
+	set = set_health,
+	get = get_health
 
 
 func _ready() -> void:
-	current_health = max_health
-	GameEvents.health_potion_collected.connect(on_health_changed_potion_collected)
+	GameEvents.health_potion_collected.connect(on_health_potion_collected)
 
 
-func damage(damage_amount: float):
-	current_health = max(current_health - damage_amount, 0)
+func set_max_health(new_value: int) -> void:
+	var difference = new_value - max_health
+	max_health = new_value
+	health += difference
+
+
+func set_health(new_health: float) -> void:
+	if new_health < health:
+		damaged.emit()
+	if health == 0:
+		died.emit()
+		owner.queue_free()
+	
+	health = clamp(new_health, 0, max_health)
 	health_changed.emit()
-	Callable(check_death).call_deferred()
+
+
+func get_health() -> float:
+	return health 
 
 
 func get_health_percent():
 	if max_health <= 0:
 		return
-	return min(current_health / max_health, 1)
+	return min(health / max_health, 1)
 
 
-func check_death():
-	if current_health == 0:
-		died.emit()
-		owner.queue_free()
-
-
-func increment_health(number: float):
-	current_health += number
-	health_changed.emit()
-
-
-func on_health_changed_potion_collected(number: float):
-	increment_health(number)
+func on_health_potion_collected(number: float):
+	set_health(get_health() + number)
+	healed.emit()
